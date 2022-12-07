@@ -9,8 +9,12 @@
 
 	int main(int argc, char** argv) {
 		Oasis::Log::Init();
+		OASISCORE_INFO("Oasis Engine starting...");
+		OASISCLIENT_INFO("Creating application...");
 		Oasis::Application* app = Oasis::CreateApplication();
+		OASISCORE_INFO("Oasis Engine application created. Starting app...");
 		app->Run();
+		OASISCORE_INFO("Oasis Engine shutting down...");
 		delete app;
 	}
 #else
