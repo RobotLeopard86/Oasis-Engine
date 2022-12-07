@@ -23,7 +23,7 @@ If you want to contribute to Oasis Engine, feel free to make a fork of it and ma
 If you find Oasis Engine useful and decide to make your own version, please give credit to myself and all other project contributors. It means a lot to know that hard work is being appreciated.  
 
 ## Developing
-Oasis Engine is developed using Visual Studio. I use Visual Studio Community 2022, but the project may be upgraded to newer versions in the future. If you use the Professional or Enterprise version of Visual Studio, please omit exclusive features from those editions. Please do not upgrade the project without my knowledge. I make the final call about IDE versioning. Thank you. To get started, make sure that the C++, .NET, and Python workloads are installed, then open Oasis-Engine.sln. There will be two projects in the solution, Oasis-Engine, which is the base engine, and Oasis-Editor, which is the level editor.  
+Oasis Engine is developed using Visual Studio. The project currently uses Visual Studio Community 2022, but may be upgraded to newer versions in the future. If you use the Professional or Enterprise version of Visual Studio, please omit exclusive features from those editions. Please do not upgrade the project without my knowledge. If the project is upgraded, I will update this README to reflect the changes. To get started, make sure that the C++, .NET, and Python workloads are installed, then run genprojects.bat, and open Oasis-Engine.sln. There will be two projects in the solution, Oasis-Engine, which is the base engine, and Oasis-Editor, which is the level editor.  
 
 Happy coding!  
 -RobotLeopard86
