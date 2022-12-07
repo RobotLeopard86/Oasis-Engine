@@ -68,8 +68,8 @@
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);$(SolutionDir)Build\Oasis-Engine\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>del "$(SolutionDir)Build\Sandbox\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll"
-copy "$(SolutionDir)Build\Oasis-Engine\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll" "$(SolutionDir)Build\Sandbox\$(Configuration)-$(Platform)\Binaries"</Command>
+      <Command>del "$(SolutionDir)Build\Oasis-Editor\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll"
+copy "$(SolutionDir)Build\Oasis-Engine\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll" "$(SolutionDir)Build\Oasis-Editor\$(Configuration)-$(Platform)\Binaries"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy Oasis-Engine DLL to Sandbox to enable it to run.</Message>
@@ -95,8 +95,8 @@ copy "$(SolutionDir)Build\Oasis-Engine\$(Configuration)-$(Platform)\Binaries\Oas
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);$(SolutionDir)Build\Oasis-Engine\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>del "$(SolutionDir)Build\Sandbox\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll"
-copy "$(SolutionDir)Build\Oasis-Engine\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll" "$(SolutionDir)Build\Sandbox\$(Configuration)-$(Platform)\Binaries"</Command>
+      <Command>del "$(SolutionDir)Build\Oasis-Editor\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll"
+copy "$(SolutionDir)Build\Oasis-Engine\$(Configuration)-$(Platform)\Binaries\Oasis-Engine.dll" "$(SolutionDir)Build\Oasis-Editor\$(Configuration)-$(Platform)\Binaries"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy Oasis-Engine DLL to Sandbox to enable it to run.</Message>

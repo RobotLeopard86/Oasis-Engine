@@ -6,3 +6,4 @@
 #include <stdio.h>
 #include "OasisEngine/Application.h"
 #include "OasisEngine/Entrypoint.h"
+#include "OasisEngine/Log.h"
