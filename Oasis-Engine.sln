@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Oasis-Engine", "Oasis-Engine\Oasis-Engine.vcxproj", "{669AD1CB-3723-49C5-8108-F547BF3616DF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{434DA993-788C-4343-AAC1-568188D9A166}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Oasis-Editor", "Oasis-Editor\Oasis-Editor.vcxproj", "{434DA993-788C-4343-AAC1-568188D9A166}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
