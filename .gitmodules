@@ -1,0 +1,6 @@
+[submodule "Oasis-Engine/thirdpartylibs/gabime_spdlog"]
+	path = Oasis-Engine/thirdpartylibs/gabime_spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Oasis-Engine/thirdpartylibs/spdlog"]
+	path = Oasis-Engine/thirdpartylibs/spdlog
+	url = https://github.com/gabime/spdlog
