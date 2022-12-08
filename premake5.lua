@@ -17,6 +17,9 @@ project "Oasis-Engine"
 	targetdir ("Build/%{prj.name}/" .. outputdir .. "/Binaries")
 	objdir ("Build/%{prj.name}/" .. outputdir .. "/CompilerData")
 
+	pchheader "OasisPCH.h"
+	pchsource "Oasis-Engine/src/OasisPCH.cpp"
+
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
@@ -25,7 +28,8 @@ project "Oasis-Engine"
 	}
 
 	includedirs {
-		"%{prj.name}/thirdpartylibs/spdlog/include"
+		"%{prj.name}/thirdpartylibs/spdlog/include",
+		"%{prj.name}/src"
 	}
 
 	filter "system:windows"

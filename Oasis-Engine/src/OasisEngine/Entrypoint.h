@@ -1,7 +1,5 @@
 #pragma once
 
-#include <stdio.h>
-
 #include "Log.h"
 
 #ifdef OASIS_WIN

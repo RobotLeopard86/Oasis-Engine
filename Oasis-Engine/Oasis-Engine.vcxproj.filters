@@ -4,6 +4,9 @@
     <Filter Include="OasisEngine">
       <UniqueIdentifier>{FAD54B13-668B-C408-EF7F-BEDF5B34BB0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OasisEngine\Events">
+      <UniqueIdentifier>{9EC4C95A-8AA8-8AB0-F308-8503DF0B7532}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Oasis.h" />
@@ -16,9 +19,22 @@
     <ClInclude Include="src\OasisEngine\Entrypoint.h">
       <Filter>OasisEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\Events\ApplicationEvent.h">
+      <Filter>OasisEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OasisEngine\Events\Event.h">
+      <Filter>OasisEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OasisEngine\Events\KeyEvent.h">
+      <Filter>OasisEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OasisEngine\Events\MouseEvent.h">
+      <Filter>OasisEngine\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\OasisEngine\Log.h">
       <Filter>OasisEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisPCH.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -27,5 +43,6 @@
     <ClCompile Include="src\OasisEngine\Log.cpp">
       <Filter>OasisEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\OasisPCH.cpp" />
   </ItemGroup>
 </Project>

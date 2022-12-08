@@ -9,3 +9,5 @@
 #else
 	#error Oasis Engine currently only supports Windows. Support for other operating systems may come in the future.
 #endif
+
+#define BIT(x) (1 << x)
