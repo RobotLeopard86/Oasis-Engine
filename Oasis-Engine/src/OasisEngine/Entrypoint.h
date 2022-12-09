@@ -10,7 +10,7 @@
 		OASISCORE_INFO("Oasis Engine starting...");
 		OASISCLIENT_INFO("Creating application...");
 		Oasis::Application* app = Oasis::CreateApplication();
-		OASISCORE_INFO("Oasis Engine application created. Starting app...");
+		OASISCLIENT_INFO("Oasis Engine application created. Starting app...");
 		app->Run();
 		OASISCORE_INFO("Oasis Engine shutting down...");
 		delete app;

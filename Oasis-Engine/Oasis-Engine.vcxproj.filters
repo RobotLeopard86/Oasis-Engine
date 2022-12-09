@@ -7,6 +7,12 @@
     <Filter Include="OasisEngine\Events">
       <UniqueIdentifier>{9EC4C95A-8AA8-8AB0-F308-8503DF0B7532}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Oasis.h" />
@@ -34,7 +40,13 @@
     <ClInclude Include="src\OasisEngine\Log.h">
       <Filter>OasisEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\Window.h">
+      <Filter>OasisEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\OasisPCH.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -44,5 +56,8 @@
       <Filter>OasisEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\OasisPCH.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

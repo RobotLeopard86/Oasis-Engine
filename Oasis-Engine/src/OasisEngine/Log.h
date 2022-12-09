@@ -10,19 +10,19 @@ namespace Oasis {
 		static void Init();
 
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() {
-			return s_CoreLogger;
+			return coreLogger;
 		}
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() {
-			return s_ClientLogger;
+			return clientLogger;
 		}
 	private:
-		static std::shared_ptr<spdlog::logger> s_CoreLogger;
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+		static std::shared_ptr<spdlog::logger> coreLogger;
+		static std::shared_ptr<spdlog::logger> clientLogger;
 	};
 }
 
 //Logging macros
-#ifdef OASISDEV
+#ifdef OASISDEBUG
 	#define OASISCORE_FATALERROR(...) ::Oasis::Log::GetCoreLogger()->critical(__VA_ARGS__)
 	#define OASISCLIENT_FATALERROR(...) ::Oasis::Log::GetClientLogger()->critical(__VA_ARGS__)
 	#define OASISCORE_ERROR(...) ::Oasis::Log::GetCoreLogger()->error(__VA_ARGS__)

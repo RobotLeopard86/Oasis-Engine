@@ -3,15 +3,15 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Oasis {
-	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+	std::shared_ptr<spdlog::logger> Log::coreLogger;
+	std::shared_ptr<spdlog::logger> Log::clientLogger;
 
 	void Log::Init() {
 		spdlog::set_pattern("%^[%T] %n: %v%$");
-		s_CoreLogger = spdlog::stdout_color_mt("Oasis Core");
-		s_CoreLogger->set_level(spdlog::level::trace);
+		coreLogger = spdlog::stdout_color_mt("Oasis Core");
+		coreLogger->set_level(spdlog::level::trace);
 
-		s_ClientLogger = spdlog::stdout_color_mt("Oasis Client");
-		s_ClientLogger->set_level(spdlog::level::trace);
+		clientLogger = spdlog::stdout_color_mt("Oasis Client");
+		clientLogger->set_level(spdlog::level::trace);
 	}
 }

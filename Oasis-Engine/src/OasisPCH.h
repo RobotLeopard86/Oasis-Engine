@@ -2,6 +2,8 @@
 
 //Oasis Engine Precompiled Header
 
+#include "OasisEngine/Log.h"
+
 #ifdef OASIS_WIN
 	#include <Windows.h>
 #endif

@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>OasisPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>OASIS_WIN;OASISDLL;OASISDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>OASIS_WIN;OASISDLL;OASISDEBUG;OASIS_ALLOWASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -91,10 +91,11 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\Build\Oasis-Engine\Debug-windows-x86_64\Binaries\Oasis-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\Build\Oasis-Engine\Debug-windows-x86_64\Binaries\Oasis-Engine.dll\ (xcopy /Q /E /Y /I ..\Build\Oasis-Engine\Debug-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Editor\Debug-windows-x86_64\Binaries &gt; nul) ELSE (xcopy /Q /Y /I ..\Build\Oasis-Engine\Debug-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Editor\Debug-windows-x86_64\Binaries &gt; nul)</Command>
+      <Command>IF EXIST ..\Build\Oasis-Engine\Debug-windows-x86_64\Binaries\Oasis-Engine.dll\ (xcopy /Q /E /Y /I ..\Build\Oasis-Engine\Debug-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Sandbox\Debug-windows-x86_64\Binaries &gt; nul) ELSE (xcopy /Q /Y /I ..\Build\Oasis-Engine\Debug-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Sandbox\Debug-windows-x86_64\Binaries &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -103,7 +104,7 @@
       <PrecompiledHeaderFile>OasisPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OASIS_WIN;OASISDLL;OASISRELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -118,10 +119,11 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\Build\Oasis-Engine\Release-windows-x86_64\Binaries\Oasis-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\Build\Oasis-Engine\Release-windows-x86_64\Binaries\Oasis-Engine.dll\ (xcopy /Q /E /Y /I ..\Build\Oasis-Engine\Release-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Editor\Release-windows-x86_64\Binaries &gt; nul) ELSE (xcopy /Q /Y /I ..\Build\Oasis-Engine\Release-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Editor\Release-windows-x86_64\Binaries &gt; nul)</Command>
+      <Command>IF EXIST ..\Build\Oasis-Engine\Release-windows-x86_64\Binaries\Oasis-Engine.dll\ (xcopy /Q /E /Y /I ..\Build\Oasis-Engine\Release-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Sandbox\Release-windows-x86_64\Binaries &gt; nul) ELSE (xcopy /Q /Y /I ..\Build\Oasis-Engine\Release-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Sandbox\Release-windows-x86_64\Binaries &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">
@@ -130,7 +132,7 @@
       <PrecompiledHeaderFile>OasisPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OASIS_WIN;OASISDLL;OASISDIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -145,10 +147,11 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\Build\Oasis-Engine\Distribution-windows-x86_64\Binaries\Oasis-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\Build\Oasis-Engine\Distribution-windows-x86_64\Binaries\Oasis-Engine.dll\ (xcopy /Q /E /Y /I ..\Build\Oasis-Engine\Distribution-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Editor\Distribution-windows-x86_64\Binaries &gt; nul) ELSE (xcopy /Q /Y /I ..\Build\Oasis-Engine\Distribution-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Editor\Distribution-windows-x86_64\Binaries &gt; nul)</Command>
+      <Command>IF EXIST ..\Build\Oasis-Engine\Distribution-windows-x86_64\Binaries\Oasis-Engine.dll\ (xcopy /Q /E /Y /I ..\Build\Oasis-Engine\Distribution-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Sandbox\Distribution-windows-x86_64\Binaries &gt; nul) ELSE (xcopy /Q /Y /I ..\Build\Oasis-Engine\Distribution-windows-x86_64\Binaries\Oasis-Engine.dll ..\Build\Oasis-Sandbox\Distribution-windows-x86_64\Binaries &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -161,7 +164,9 @@
     <ClInclude Include="src\OasisEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\OasisEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\OasisEngine\Log.h" />
+    <ClInclude Include="src\OasisEngine\Window.h" />
     <ClInclude Include="src\OasisPCH.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp" />
@@ -169,6 +174,12 @@
     <ClCompile Include="src\OasisPCH.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="thirdpartylibs\glfw\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,10 @@ workspace "Oasis-Engine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Oasis-Engine/thirdpartylibs/glfw/include"
+include "Oasis-Engine/thirdpartylibs/glfw"
+
 project "Oasis-Engine"
 	location "Oasis-Engine"
 	kind "SharedLib"
@@ -29,7 +33,13 @@ project "Oasis-Engine"
 
 	includedirs {
 		"%{prj.name}/thirdpartylibs/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links {
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -44,11 +54,14 @@ project "Oasis-Engine"
 		}
 
 		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../Build/Oasis-Editor/" .. outputdir .. "/Binaries")
+			("{COPY} %{cfg.buildtarget.relpath} ../Build/Oasis-Sandbox/" .. outputdir .. "/Binaries")
 		}
 
 	filter "configurations:Debug"
-		defines "OASISDEBUG"
+		defines {
+			"OASISDEBUG",
+			"OASIS_ALLOWASSERTS"
+		}
 		symbols "On"
 
 	filter "configurations:Release"
@@ -59,8 +72,8 @@ project "Oasis-Engine"
 		defines "OASISDIST"
 		optimize "On"
 
-project "Oasis-Editor"
-	location "Oasis-Editor"
+project "Oasis-Sandbox"
+	location "Oasis-Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 
@@ -75,8 +88,9 @@ project "Oasis-Editor"
 	}
 
 	includedirs {
+		"Oasis-Engine/thirdpartylibs/glfw/include",
 		"Oasis-Engine/thirdpartylibs/spdlog/include",
-		"Oasis-Engine/src"
+		"Oasis-Engine/src",
 	}
 
 	links {
@@ -91,11 +105,10 @@ project "Oasis-Editor"
 
 		defines {
 			"OASIS_WIN",
-			"OASISDEV"
 		}
 
 	filter "configurations:Debug"
-		defines "OASISDEV"
+		defines "OASISDEBUG"
 		symbols "On"
 
 	filter "configurations:Release"

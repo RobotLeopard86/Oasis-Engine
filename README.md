@@ -20,10 +20,13 @@ Currently, Oasis Engine is only available on Windows. Support for other operatin
 If you want to contribute to Oasis Engine, feel free to make a fork of it and make a pull request to merge into the main repository. You can also contribute by leaving feedback and reporting bugs.  
 
 ## Attribution  
-If you find Oasis Engine useful and decide to make your own version, please give credit to myself and all other project contributors. It means a lot to know that hard work is being appreciated.  
+If you find Oasis Engine useful and decide to make your own version, please give credit to myself and all other project contributors. It means a lot to know that hard work is being appreciated. This work is licensed under the Apache License 2.0, so make sure to respect the license.  
 
 ## Developing
-Oasis Engine is developed using Visual Studio. The project currently uses Visual Studio Community 2022, but may be upgraded to newer versions in the future. If you use the Professional or Enterprise version of Visual Studio, please omit exclusive features from those editions. Please do not upgrade the project without my knowledge. If the project is upgraded, I will update this README to reflect the changes. To get started, make sure that the C++, .NET, and Python workloads are installed, then run genprojects.bat, and open Oasis-Engine.sln. There will be two projects in the solution, Oasis-Engine, which is the base engine, and Oasis-Editor, which is the level editor.  
+Oasis Engine is developed using Visual Studio. The project currently uses Visual Studio Community 2022, but may be upgraded to newer versions in the future. If you use the Professional or Enterprise version of Visual Studio, please omit exclusive features from those editions. Please do not upgrade the project without my knowledge. If the project is upgraded, I will update this README to reflect the changes. To get started, make sure that the C++, .NET, and Python workloads are installed, then run genprojects.bat, and open Oasis-Engine.sln. There will be three projects in the solution, Oasis-Engine, which is the base engine, Oasis-Sandbox, which is a sandbox application for testing, and GLFW, which is a version of GLFW 3 modified to use Premake.  
+
+## Third Party Licenses  
+Oasis Engine uses multiple third party libraries. As each has different licenses that must be respected, a copy of each is placed in the root directory, named by the library name, which is an exact copy of the license for the respective library.  
 
 Enjoy!  
 -RobotLeopard86
