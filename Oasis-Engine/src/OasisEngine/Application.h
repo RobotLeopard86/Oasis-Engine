@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "Window.h"
+#include "LayerStack.h"
 #include "Events/ApplicationEvent.h"
 
 namespace Oasis {
@@ -12,9 +13,13 @@ namespace Oasis {
 
 		void Run();
 		void HandleEvent(Event& event);
+
+		void PutLayer(Layer* layer);
+		void PutOverlayLayer(Layer* overlay);
 	private:
 		std::unique_ptr<Window> window;
 		bool applicationRunning = true;
+		LayerStack layerStack;
 
 		bool OnWindowClose(WindowCloseEvent& wce);
 	};

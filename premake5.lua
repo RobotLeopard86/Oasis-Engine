@@ -62,14 +62,17 @@ project "Oasis-Engine"
 			"OASISDEBUG",
 			"OASIS_ALLOWASSERTS"
 		}
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "OASISRELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Distribution"
 		defines "OASISDIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Oasis-Sandbox"
@@ -109,12 +112,15 @@ project "Oasis-Sandbox"
 
 	filter "configurations:Debug"
 		defines "OASISDEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "OASISRELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Distribution"
 		defines "OASISDIST"
+		buildoptions "/MD"
 		optimize "On"

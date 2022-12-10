@@ -32,8 +32,7 @@ namespace Oasis {
 
 		GLFWwindow* window;
 
-		struct WindowData
-		{
+		struct WindowData {
 			std::string title;
 			unsigned int width, height;
 			bool useVSync;

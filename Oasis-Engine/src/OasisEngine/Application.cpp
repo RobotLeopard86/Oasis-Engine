@@ -17,8 +17,12 @@ namespace Oasis {
 	}
 	void Application::Run() {
 		while(applicationRunning) {
-			glClearColor(0.671875, 0, 0.8984375, 1);
+			glClearColor(0, 0.69921875, 0.5234375, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for(Layer* layer : layerStack) {
+				layer->OnUpdate();
+			}
 
 			window->OnUpdate();
 		}
@@ -27,10 +31,21 @@ namespace Oasis {
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENTFN(Application::OnWindowClose));
 
-		OASISCORE_TRACE("An event just occurred: {0}", event);
+		for (auto it = layerStack.end(); it != layerStack.begin();) {
+			(*--it)->HandleEvent(event);
+			if(event.handled) {
+				break;
+			}
+		}
 	}
 	bool Application::OnWindowClose(WindowCloseEvent& wce) {
 		applicationRunning = false;
 		return true;
+	}
+	void Application::PutLayer(Layer* layer) {
+		layerStack.PutLayer(layer);
+	}
+	void Application::PutOverlayLayer(Layer* overlay) {
+		layerStack.PutOverlayLayer(overlay);
 	}
 }

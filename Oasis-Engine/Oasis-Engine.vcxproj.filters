@@ -37,6 +37,12 @@
     <ClInclude Include="src\OasisEngine\Events\MouseEvent.h">
       <Filter>OasisEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\Layer.h">
+      <Filter>OasisEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OasisEngine\LayerStack.h">
+      <Filter>OasisEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\OasisEngine\Log.h">
       <Filter>OasisEngine</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
+      <Filter>OasisEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OasisEngine\Layer.cpp">
+      <Filter>OasisEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OasisEngine\LayerStack.cpp">
       <Filter>OasisEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\OasisEngine\Log.cpp">
