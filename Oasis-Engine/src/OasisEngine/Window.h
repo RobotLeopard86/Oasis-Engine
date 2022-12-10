@@ -31,7 +31,6 @@ namespace Oasis {
 		virtual void SetEventCallback(const CallbackFunc& callback) = 0;
 		virtual void SetVSyncEnabled(bool enabled) = 0;
 		virtual bool IsVSyncEnabled() const = 0;
-		virtual bool ShouldWindowClose() = 0;
 
 		static Window* NewWindow(const WindowProperties& props = WindowProperties());
 	};

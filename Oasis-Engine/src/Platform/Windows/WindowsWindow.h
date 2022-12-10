@@ -26,7 +26,6 @@ namespace Oasis {
 
 		void SetVSyncEnabled(bool enabled) override;
 		bool IsVSyncEnabled() const override;
-		bool ShouldWindowClose() override;
 	private:
 		virtual void Init(const WindowProperties& props);
 		virtual void Shutdown();
