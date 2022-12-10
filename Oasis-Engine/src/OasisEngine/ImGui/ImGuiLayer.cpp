@@ -5,7 +5,9 @@
 #include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
 #include "OasisEngine/Application.h"
 
+//TEMPORARY
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Oasis {
 
@@ -90,6 +92,77 @@ namespace Oasis {
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 
-	void ImGuiLayer::HandleEvent(Event& event) {}
+	void ImGuiLayer::HandleEvent(Event& event) {
+		EventDispatcher dispatcher(event);
+		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENTFN(ImGuiLayer::OnKeyPressed));
+		dispatcher.Dispatch<KeyTypedEvent>(BIND_EVENTFN(ImGuiLayer::OnKeyTyped));
+		dispatcher.Dispatch<KeyReleasedEvent>(BIND_EVENTFN(ImGuiLayer::OnKeyReleased));
+		dispatcher.Dispatch<MouseButtonPressedEvent>(BIND_EVENTFN(ImGuiLayer::OnMousePressed));
+		dispatcher.Dispatch<MouseButtonReleasedEvent>(BIND_EVENTFN(ImGuiLayer::OnMouseReleased));
+		dispatcher.Dispatch<MouseMovedEvent>(BIND_EVENTFN(ImGuiLayer::OnMouseMoved));
+		dispatcher.Dispatch<MouseScrolledEvent>(BIND_EVENTFN(ImGuiLayer::OnMouseScrolled));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENTFN(ImGuiLayer::OnWindowResized));
+	}
+
+	bool ImGuiLayer::OnKeyPressed(KeyPressedEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+		io.KeysDown[event.GetKeyCode()] = true;
+
+		return false;
+	}
+	bool ImGuiLayer::OnKeyReleased(KeyReleasedEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+		io.KeysDown[event.GetKeyCode()] = false;
+
+		io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
+		io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
+		io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
+		io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+
+		return false;
+	}
+	bool ImGuiLayer::OnKeyTyped(KeyTypedEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+
+		unsigned int keycode = event.GetKeyCode();
+		if (keycode > 0 && keycode < 0x10000) {
+			io.AddInputCharacter((unsigned short)keycode);
+		}
+
+		return false;
+	}
+	bool ImGuiLayer::OnMousePressed(MouseButtonPressedEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseDown[event.GetMouseButton()] = true;
+
+		return false;
+	}
+	bool ImGuiLayer::OnMouseReleased(MouseButtonReleasedEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseDown[event.GetMouseButton()] = false;
+
+		return false;
+	}
+	bool ImGuiLayer::OnMouseMoved(MouseMovedEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+		io.MousePos = ImVec2(event.GetX(), event.GetY());
+
+		return false;
+	}
+	bool ImGuiLayer::OnMouseScrolled(MouseScrolledEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseWheel += event.GetYOffset();
+		io.MouseWheelH += event.GetXOffset();
+
+		return false;
+	}
+	bool ImGuiLayer::OnWindowResized(WindowResizeEvent& event) {
+		ImGuiIO& io = ImGui::GetIO();
+		io.DisplaySize = ImVec2(event.GetWidth(), event.GetHeight());
+		io.DisplayFramebufferScale = ImVec2(1, 1);
+		glViewport(0, 0, event.GetWidth(), event.GetHeight());
+		
+		return false;
+	}
 
 }

@@ -64,6 +64,12 @@ namespace Oasis {
 			data.callback(event);
 		});
 
+		glfwSetCharCallback(window, [](GLFWwindow* lambdaWindow, unsigned int lambdaChar) {
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(lambdaWindow);
+			KeyTypedEvent event(lambdaChar);
+			data.callback(event);
+		});
+
 		glfwSetKeyCallback(window, [](GLFWwindow* lambdaWindow, int lambdaKey, int lambdaScancode, int lambdaAction, int lambdaModifiers) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(lambdaWindow);
 			switch (lambdaAction) {

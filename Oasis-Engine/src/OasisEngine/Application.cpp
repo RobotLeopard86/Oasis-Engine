@@ -7,8 +7,6 @@
 
 namespace Oasis {
 
-	#define BIND_EVENTFN(f) std::bind(&f, this, std::placeholders::_1)
-
 	Application* Application::instance = nullptr;
 
 	Application::Application() {
