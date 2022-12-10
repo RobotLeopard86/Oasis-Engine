@@ -2,7 +2,7 @@
 
 #include "OasisEngine/Window.h"
 
-#include <glfw/glfw3.h>
+#include <GLFW/glfw3.h>
 
 namespace Oasis {
 	class WindowsWindow : public Window {

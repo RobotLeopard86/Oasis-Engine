@@ -5,6 +5,8 @@
 #include "OasisEngine/Events/MouseEvent.h"
 #include "OasisEngine/Events/KeyEvent.h"
 
+#include <glad/glad.h>
+
 namespace Oasis {
 	static bool glfwInitialized = false;
 
@@ -43,6 +45,8 @@ namespace Oasis {
 
 		window = glfwCreateWindow((int)props.width, (int)props.height, windowData.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
+		int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		COREASSERT(gladStatus, "Glad refused to initialize!");
 		glfwSetWindowUserPointer(window, &windowData);
 		SetVSyncEnabled(true);
 

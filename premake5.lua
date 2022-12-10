@@ -54,7 +54,8 @@ project "Oasis-Engine"
 
 		defines {
 			"OASIS_WIN",
-			"OASISDLL"
+			"OASISDLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands {
