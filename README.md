@@ -1,4 +1,4 @@
-# Oasis Engine  
+# Oasis Engine ![Logo](Logos/oasislogo_singular.png)  
 ### A C++ game engine.  
 
 ## About  
