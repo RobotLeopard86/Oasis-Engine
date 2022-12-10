@@ -11,7 +11,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Oasis-Engine/thirdpartylibs/glfw/include"
+IncludeDir["GLAD"] = "Oasis-Engine/thirdpartylibs/glad/include"
 include "Oasis-Engine/thirdpartylibs/glfw"
+include "Oasis-Engine/thirdpartylibs/glad"
 
 project "Oasis-Engine"
 	location "Oasis-Engine"
@@ -34,11 +36,13 @@ project "Oasis-Engine"
 	includedirs {
 		"%{prj.name}/thirdpartylibs/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLAD}"
 	}
 
 	links {
 		"GLFW",
+		"GLAD",
 		"opengl32.lib"
 	}
 
