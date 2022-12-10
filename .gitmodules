@@ -4,3 +4,6 @@
 [submodule "Oasis-Engine/thirdpartylibs/glfw"]
 	path = Oasis-Engine/thirdpartylibs/glfw
 	url = https://github.com/RobotLeopard86/glfw
+[submodule "Oasis-Engine/thirdpartylibs/imgui"]
+	path = Oasis-Engine/thirdpartylibs/imgui
+	url = https://github.com/RobotLeopard86/imgui

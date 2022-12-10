@@ -9,7 +9,12 @@ namespace Oasis {
 
 	#define BIND_EVENTFN(f) std::bind(&f, this, std::placeholders::_1)
 
+	Application* Application::instance = nullptr;
+
 	Application::Application() {
+		COREASSERT(!instance, "Application instance already exists!");
+		instance = this;
+
 		window = std::unique_ptr<Window>(Window::NewWindow());
 		window->SetEventCallback(BIND_EVENTFN(Application::HandleEvent));
 	}
@@ -44,9 +49,11 @@ namespace Oasis {
 		return true;
 	}
 	void Application::PutLayer(Layer* layer) {
+		layer->OnInit();
 		layerStack.PutLayer(layer);
 	}
 	void Application::PutOverlayLayer(Layer* overlay) {
+		overlay->OnInit();
 		layerStack.PutOverlayLayer(overlay);
 	}
 }

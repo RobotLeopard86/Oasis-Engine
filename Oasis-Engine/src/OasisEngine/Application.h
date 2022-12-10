@@ -6,8 +6,10 @@
 #include "Events/ApplicationEvent.h"
 
 namespace Oasis {
+
 	class OASIS_API Application {
 	public:
+
 		Application();
 		virtual ~Application();
 
@@ -16,10 +18,20 @@ namespace Oasis {
 
 		void PutLayer(Layer* layer);
 		void PutOverlayLayer(Layer* overlay);
+
+		inline Window& GetWindow() {
+			return *window;
+		}
+
+		inline static Application& Get() {
+			return *instance;
+		}
 	private:
 		std::unique_ptr<Window> window;
 		bool applicationRunning = true;
 		LayerStack layerStack;
+
+		static Application* instance;
 
 		bool OnWindowClose(WindowCloseEvent& wce);
 	};

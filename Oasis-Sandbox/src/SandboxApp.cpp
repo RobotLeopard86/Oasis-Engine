@@ -18,6 +18,7 @@ class Sandbox : public Oasis::Application {
 public:
 	Sandbox() {
 		PutLayer(new ExampleLayer());
+		PutOverlayLayer(new Oasis::ImGuiLayer());
 	}
 	
 	~Sandbox() {

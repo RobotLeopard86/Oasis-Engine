@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>OasisPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OASIS_WIN;OASISDLL;GLFW_INCLUDE_NONE;OASISDEBUG;OASIS_ALLOWASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;thirdpartylibs\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;thirdpartylibs\glad\include;thirdpartylibs\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -105,7 +105,7 @@
       <PrecompiledHeaderFile>OasisPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OASIS_WIN;OASISDLL;GLFW_INCLUDE_NONE;OASISRELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;thirdpartylibs\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;thirdpartylibs\glad\include;thirdpartylibs\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -134,7 +134,7 @@
       <PrecompiledHeaderFile>OasisPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OASIS_WIN;OASISDLL;GLFW_INCLUDE_NONE;OASISDIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;thirdpartylibs\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdpartylibs\spdlog\include;src;thirdpartylibs\glfw\include;thirdpartylibs\glad\include;thirdpartylibs\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -166,21 +166,25 @@
     <ClInclude Include="src\OasisEngine\Events\Event.h" />
     <ClInclude Include="src\OasisEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\OasisEngine\Events\MouseEvent.h" />
+    <ClInclude Include="src\OasisEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\OasisEngine\Layer.h" />
     <ClInclude Include="src\OasisEngine\LayerStack.h" />
     <ClInclude Include="src\OasisEngine\Log.h" />
     <ClInclude Include="src\OasisEngine\Window.h" />
     <ClInclude Include="src\OasisPCH.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp" />
+    <ClCompile Include="src\OasisEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\OasisEngine\Layer.cpp" />
     <ClCompile Include="src\OasisEngine\LayerStack.cpp" />
     <ClCompile Include="src\OasisEngine\Log.cpp" />
     <ClCompile Include="src\OasisPCH.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +193,9 @@
     </ProjectReference>
     <ProjectReference Include="thirdpartylibs\glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="thirdpartylibs\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
