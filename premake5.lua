@@ -59,8 +59,8 @@ project "Oasis-Engine"
 		systemversion "10.0.22621.0"
 
 		defines {
-			"OASIS_WIN",
-			"OASISDLL",
+			"OE_PLATFORM_WIN",
+			"OE_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
 
@@ -70,19 +70,19 @@ project "Oasis-Engine"
 
 	filter "configurations:Debug"
 		defines {
-			"OASISDEBUG",
-			"OASIS_ALLOWASSERTS"
+			"OE_DEBUG",
+			"OE_ALLOWASSERTS"
 		}
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "OASISRELEASE"
+		defines "OE_RELEASE"
 		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Distribution"
-		defines "OASISDIST"
+		defines "OE_DIST"
 		runtime "Release"
 		optimize "On"
 
@@ -118,20 +118,20 @@ project "Oasis-Sandbox"
 		systemversion "10.0.22621.0"
 
 		defines {
-			"OASIS_WIN",
+			"OE_PLATFORM_WIN",
 		}
 
 	filter "configurations:Debug"
-		defines "OASISDEBUG"
+		defines "OE_DEBUG"
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "OASISRELEASE"
+		defines "OE_RELEASE"
 		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Distribution"
-		defines "OASISDIST"
+		defines "OE_DIST"
 		runtime "Release"
 		optimize "On"

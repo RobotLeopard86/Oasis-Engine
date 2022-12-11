@@ -7,7 +7,6 @@ namespace Oasis {
 
 	void ImGuiStyleOasis() {
 		ImGuiStyle* style = &ImGui::GetStyle();
-		style->FrameRounding = 5;
 		ImVec4* colors = style->Colors;
 
 		colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
@@ -66,6 +65,9 @@ namespace Oasis {
 		colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
 		colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.35f);
 
-
+		style->FrameRounding = 5;
+		style->ChildRounding = 5;
+		style->WindowRounding = 5;
+		style->PopupRounding = 5;
 	}
 }

@@ -71,7 +71,7 @@ namespace Oasis {
 		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
 
 		int imguiInit = ImGui_ImplOpenGL3_Init("#version 410");
-		COREASSERT(imguiInit, "ImGui refused to initialize!");
+		OE_COREASSERT(imguiInit, "ImGui refused to initialize!");
 	}
 
 	void ImGuiLayer::OnShutdown() {}

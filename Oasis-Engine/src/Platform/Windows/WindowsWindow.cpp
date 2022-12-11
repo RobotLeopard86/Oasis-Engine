@@ -11,7 +11,7 @@ namespace Oasis {
 	static bool glfwInitialized = false;
 
 	static void GLFWErrorCallback(int errorCode, const char* errorDescription) {
-		OASISCORE_ERROR("GLFW error, code {0}. Reason: {1}", errorCode, errorDescription);
+		OE_CORE_ERROR("GLFW error, code {0}. Reason: {1}", errorCode, errorDescription);
 	}
 
 	Window* Window::NewWindow(const WindowProperties& props) {
@@ -31,12 +31,12 @@ namespace Oasis {
 		windowData.width = props.width;
 		windowData.height = props.height;
 
-		OASISCORE_INFO("Creating window for application \"{0}\" at size {1}x{2}...", props.title, props.width, props.height);
+		OE_CORE_INFO("Creating window for application \"{0}\" at size {1}x{2}...", props.title, props.width, props.height);
 
 		if(!glfwInitialized) {
 			//Note: Implement glfwTerminate when system shuts down.
 			int success = glfwInit();
-			COREASSERT(success, "GLFW refused to initialize!");
+			OE_COREASSERT(success, "GLFW refused to initialize!");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
 
@@ -46,7 +46,7 @@ namespace Oasis {
 		window = glfwCreateWindow((int)props.width, (int)props.height, windowData.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
 		int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		COREASSERT(gladStatus, "Glad refused to initialize!");
+		OE_COREASSERT(gladStatus, "Glad refused to initialize!");
 		glfwSetWindowUserPointer(window, &windowData);
 		SetVSyncEnabled(true);
 
@@ -122,7 +122,7 @@ namespace Oasis {
 	}
 
 	void WindowsWindow::Shutdown() {
-		OASISCORE_INFO("App window shutting down...");
+		OE_CORE_INFO("App window shutting down...");
 		glfwDestroyWindow(window);
 		glfwTerminate();
 	}

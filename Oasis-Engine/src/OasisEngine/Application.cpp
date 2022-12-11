@@ -2,6 +2,7 @@
 #include "Log.h"
 #include "Application.h"
 #include "Input.h"
+#include "Keycodes.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -11,7 +12,7 @@ namespace Oasis {
 	Application* Application::instance = nullptr;
 
 	Application::Application() {
-		COREASSERT(!instance, "Application instance already exists!");
+		OE_COREASSERT(!instance, "Application instance already exists!");
 		instance = this;
 
 		window = std::unique_ptr<Window>(Window::NewWindow());
@@ -28,9 +29,6 @@ namespace Oasis {
 			for(Layer* layer : layerStack) {
 				layer->OnUpdate();
 			}
-
-			auto [x, y] = Input::GetMousePos();
-			OASISCORE_TRACE("Mouse position: {0}, {1}", x, y);
 
 			window->OnUpdate();
 		}

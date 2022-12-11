@@ -6,12 +6,12 @@ public:
 		: Layer("Example Layer") {}
 
 	void OnUpdate() override {
-		OASISCORE_INFO("Example Layer update!");
+		if(Oasis::Input::IsKeyPressed(OE_KEY_TAB)) {
+			OE_CORE_TRACE("You pressed the tab key!");
+		}
 	}
 
-	void HandleEvent(Oasis::Event& event) override {
-		OASISCORE_TRACE("Example Layer received event: {0}", event);
-	}
+	void HandleEvent(Oasis::Event& event) override {}
 };
 
 class Sandbox : public Oasis::Application {

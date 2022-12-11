@@ -52,6 +52,9 @@
     <ClInclude Include="src\OasisEngine\Input.h">
       <Filter>OasisEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\Keycodes.h">
+      <Filter>OasisEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\OasisEngine\Layer.h">
       <Filter>OasisEngine</Filter>
     </ClInclude>
@@ -74,6 +77,7 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">

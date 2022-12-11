@@ -2,17 +2,16 @@
 
 #include "Log.h"
 
-#ifdef OASIS_WIN
+#ifdef OE_PLATFORM_WIN
 	extern Oasis::Application* Oasis::CreateApplication();
 
 	int main(int argc, char** argv) {
 		Oasis::Log::Init();
-		OASISCORE_INFO("Oasis Engine starting...");
-		OASISCLIENT_INFO("Creating application...");
+		OE_CORE_INFO("Welcome to Oasis Engine!");
+		OE_CORE_INFO("Creating application...");
 		Oasis::Application* app = Oasis::CreateApplication();
-		OASISCLIENT_INFO("Oasis Engine application created. Starting app...");
 		app->Run();
-		OASISCORE_INFO("Oasis Engine shutting down...");
+		OE_CORE_INFO("Oasis Engine shutting down...");
 		delete app;
 	}
 #else
