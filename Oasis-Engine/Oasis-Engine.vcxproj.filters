@@ -7,8 +7,14 @@
     <Filter Include="OasisEngine\Events">
       <UniqueIdentifier>{9EC4C95A-8AA8-8AB0-F308-8503DF0B7532}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OasisEngine\ImGui">
+      <UniqueIdentifier>{A45E7FF3-1075-7D89-59EC-08ABC5414E11}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -37,6 +43,15 @@
     <ClInclude Include="src\OasisEngine\Events\MouseEvent.h">
       <Filter>OasisEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\ImGui\ImGuiCustomStyle.h">
+      <Filter>OasisEngine\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OasisEngine\ImGui\ImGuiLayer.h">
+      <Filter>OasisEngine\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OasisEngine\Input.h">
+      <Filter>OasisEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\OasisEngine\Layer.h">
       <Filter>OasisEngine</Filter>
     </ClInclude>
@@ -50,15 +65,22 @@
       <Filter>OasisEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\OasisPCH.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\OasisEngine\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
       <Filter>OasisEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OasisEngine\ImGui\ImGuiLayer.cpp">
+      <Filter>OasisEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\OasisEngine\Layer.cpp">
       <Filter>OasisEngine</Filter>
@@ -70,10 +92,14 @@
       <Filter>OasisEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\OasisPCH.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\OasisEngine\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

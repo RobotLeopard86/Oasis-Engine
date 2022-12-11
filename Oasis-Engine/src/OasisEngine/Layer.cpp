@@ -7,9 +7,4 @@ namespace Oasis {
 		: debugName(debugName) {}
 
 	Layer::~Layer() {}
-
-	void Layer::OnInit() {}
-	void Layer::OnShutdown() {}
-	void Layer::OnUpdate() {}
-	void Layer::HandleEvent(Event& event) {}
 }

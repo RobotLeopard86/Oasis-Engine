@@ -9,11 +9,11 @@ namespace Oasis {
 		Layer(const std::string& name = "New Layer");
 		virtual ~Layer();
 
-		virtual void OnInit();
-		virtual void OnShutdown();
-		virtual void OnUpdate();
+		virtual void OnInit() {};
+		virtual void OnShutdown() {};
+		virtual void OnUpdate() {};
 
-		virtual void HandleEvent(Event& event);
+		virtual void HandleEvent(Event& event) {};
 		inline const std::string& GetName() const {
 			return debugName;
 		}

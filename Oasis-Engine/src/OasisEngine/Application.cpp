@@ -1,6 +1,7 @@
 #include "OasisPCH.h"
 #include "Log.h"
 #include "Application.h"
+#include "Input.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -27,6 +28,9 @@ namespace Oasis {
 			for(Layer* layer : layerStack) {
 				layer->OnUpdate();
 			}
+
+			auto [x, y] = Input::GetMousePos();
+			OASISCORE_TRACE("Mouse position: {0}, {1}", x, y);
 
 			window->OnUpdate();
 		}

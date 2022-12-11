@@ -24,6 +24,10 @@ namespace Oasis {
 			windowData.callback = callback; 
 		}
 
+		inline void* GetNativeWindow() const override {
+			return window;
+		}
+
 		void SetVSyncEnabled(bool enabled) override;
 		bool IsVSyncEnabled() const override;
 	private:

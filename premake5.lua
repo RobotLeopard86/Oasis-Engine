@@ -7,6 +7,8 @@ workspace "Oasis-Engine"
 		"Distribution"
 	}
 
+	startproject "Oasis-Sandbox"
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
@@ -21,6 +23,7 @@ project "Oasis-Engine"
 	location "Oasis-Engine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("Build/%{prj.name}/" .. outputdir .. "/Binaries")
 	objdir ("Build/%{prj.name}/" .. outputdir .. "/CompilerData")
@@ -53,7 +56,6 @@ project "Oasis-Engine"
 	filter "system:windows"
 		cppdialect "C++20"
 		cdialect "C17"
-		staticruntime "On"
 		systemversion "10.0.22621.0"
 
 		defines {
@@ -71,23 +73,24 @@ project "Oasis-Engine"
 			"OASISDEBUG",
 			"OASIS_ALLOWASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "OASISRELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Distribution"
 		defines "OASISDIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Oasis-Sandbox"
 	location "Oasis-Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("Build/%{prj.name}/" .. outputdir .. "/Binaries")
 	objdir ("Build/%{prj.name}/" .. outputdir .. "/CompilerData")
@@ -112,7 +115,6 @@ project "Oasis-Sandbox"
 	filter "system:windows"
 		cppdialect "C++20"
 		cdialect "C17"
-		staticruntime "On"
 		systemversion "10.0.22621.0"
 
 		defines {
@@ -121,15 +123,15 @@ project "Oasis-Sandbox"
 
 	filter "configurations:Debug"
 		defines "OASISDEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "OASISRELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Distribution"
 		defines "OASISDIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

@@ -1,5 +1,6 @@
 #include "OasisPCH.h"
 #include "ImGuiLayer.h"
+#include "ImGuiCustomStyle.h"
 
 #include "imgui.h"
 #include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
@@ -18,11 +19,13 @@ namespace Oasis {
 
 	void ImGuiLayer::OnInit() {
 		ImGui::CreateContext();
-		ImGui::StyleColorsDark();
+		ImGuiStyleOasis();
 
 		ImGuiIO& io = ImGui::GetIO();
 		io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
 		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
 		//Temporary, should eventually be migrated to Oasis Engine key codes
 		io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;

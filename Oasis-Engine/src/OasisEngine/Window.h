@@ -28,6 +28,8 @@ namespace Oasis {
 		virtual unsigned int GetWindowWidth() const = 0;
 		virtual unsigned int GetWindowHeight() const = 0;
 
+		virtual void* GetNativeWindow() const = 0;
+
 		virtual void SetEventCallback(const CallbackFunc& callback) = 0;
 		virtual void SetVSyncEnabled(bool enabled) = 0;
 		virtual bool IsVSyncEnabled() const = 0;
