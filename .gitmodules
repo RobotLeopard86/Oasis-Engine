@@ -7,3 +7,6 @@
 [submodule "Oasis-Engine/thirdpartylibs/imgui"]
 	path = Oasis-Engine/thirdpartylibs/imgui
 	url = https://github.com/RobotLeopard86/imgui
+[submodule "Oasis-Engine/thirdpartylibs/glm"]
+	path = Oasis-Engine/thirdpartylibs/glm
+	url = https://github.com/g-truc/glm

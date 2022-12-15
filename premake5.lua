@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Oasis-Engine/thirdpartylibs/glfw/include"
+IncludeDir["SPDLOG"] = "Oasis-Engine/thirdpartylibs/spdlog/include"
 IncludeDir["GLAD"] = "Oasis-Engine/thirdpartylibs/glad/include"
 IncludeDir["IMGUI"] = "Oasis-Engine/thirdpartylibs/imgui"
+IncludeDir["GLM"] = "Oasis-Engine/thirdpartylibs/glm/"
 include "Oasis-Engine/thirdpartylibs/glfw"
 include "Oasis-Engine/thirdpartylibs/glad"
 include "Oasis-Engine/thirdpartylibs/imgui"
@@ -35,15 +37,19 @@ project "Oasis-Engine"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/src/**.c",
-		"%{prj.name}/src/**.hpp"
+		"%{prj.name}/src/**.hpp",
+		"%{prj.name}/thirdpartylibs/glm/glm/**.hpp",
+		"%{prj.name}/thirdpartylibs/glfw/include/**.h",
+		"%{prj.name}/thirdpartylibs/glm/glm/**.inl"
 	}
 
 	includedirs {
-		"%{prj.name}/thirdpartylibs/spdlog/include",
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLAD}",
-		"%{IncludeDir.IMGUI}"
+		"%{IncludeDir.IMGUI}",
+		"%{IncludeDir.SPDLOG}",
+		"%{IncludeDir.GLM}"
 	}
 
 	links {
@@ -103,8 +109,8 @@ project "Oasis-Sandbox"
 	}
 
 	includedirs {
-		"Oasis-Engine/thirdpartylibs/glfw/include",
-		"Oasis-Engine/thirdpartylibs/spdlog/include",
+		"%{IncludeDir.SPDLOG}",
+		"%{IncludeDir.GLM}",
 		"Oasis-Engine/src",
 	}
 

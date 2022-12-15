@@ -3,8 +3,8 @@ project "Glad"
 	language "C"
 	staticruntime "on"
 
-	targetdir ("Build/%{prj.name}/" .. outputdir .. "/Binaries")
-	objdir ("Build/%{prj.name}/" .. outputdir .. "/CompilerData")
+	targetdir ("../../../Build/%{prj.name}/" .. outputdir .. "/Binaries")
+	objdir ("../../../Build/%{prj.name}/" .. outputdir .. "/CompilerData")
 
 	files {
 		"include/glad/glad.h",
@@ -26,11 +26,9 @@ project "Glad"
 
 	filter {"system:windows", "configurations:Release"}
 		runtime "Release"
-        buildoptions "/MT"
 		optimize "on"
 
 	filter {"system:windows", "configurations:Distribution"}
 		runtime "Release"
-        buildoptions "/MT"
 		optimize "on"
         symbols "off"   

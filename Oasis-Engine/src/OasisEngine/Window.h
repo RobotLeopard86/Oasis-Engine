@@ -3,8 +3,6 @@
 #include "Core.h"
 #include "Events/Event.h"
 
-#include <GLFW/glfw3.h>
-
 namespace Oasis {
 	struct WindowProperties {
 		std::string title;
