@@ -12,7 +12,7 @@
 
 #ifdef OE_ALLOWASSERTS
 	#define OE_CLIENTASSERT(x, ...) { if(!(x)) { OE_CLIENT_ERROR("FAILED ASSERTION ON CLIENT: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define OE_COREASSERT(x, ...) { if(!(x)) { OE_CLIENT_ERROR("FAILED ASSERTION ON CLIENT: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define OE_COREASSERT(x, ...) { if(!(x)) { OE_CLIENT_ERROR("FAILED ASSERTION ON CORE: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 	#define OE_CLIENTASSERT(x, ...)
 	#define OE_COREASSERT(x, ...)

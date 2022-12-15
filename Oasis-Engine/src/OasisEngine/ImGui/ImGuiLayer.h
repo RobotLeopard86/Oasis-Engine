@@ -11,20 +11,14 @@ namespace Oasis {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnInit();
-		void OnShutdown();
-		void OnUpdate();
-		void HandleEvent(Event& event);
+		void OnInit() override;
+		void OnShutdown() override;
+		void OnImGuiDraw() override;
+
+		void Begin();
+		void End();
 	private:
 		float time = 0.0f;
-
-		bool OnMousePressed(MouseButtonPressedEvent& event);
-		bool OnMouseReleased(MouseButtonReleasedEvent& event);
-		bool OnMouseMoved(MouseMovedEvent& event);
-		bool OnMouseScrolled(MouseScrolledEvent& event);
-		bool OnKeyPressed(KeyPressedEvent& event);
-		bool OnKeyTyped(KeyTypedEvent& event);
-		bool OnKeyReleased(KeyReleasedEvent& event);
-		bool OnWindowResized(WindowResizeEvent& event);
+		bool succesfulImGuiInit = false;
 	};
 }

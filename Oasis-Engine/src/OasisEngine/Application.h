@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "LayerStack.h"
 #include "Events/ApplicationEvent.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace Oasis {
 
@@ -28,6 +29,7 @@ namespace Oasis {
 		}
 	private:
 		std::unique_ptr<Window> window;
+		ImGuiLayer* imguiLayer;
 		bool applicationRunning = true;
 		LayerStack layerStack;
 

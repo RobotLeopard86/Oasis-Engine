@@ -173,7 +173,6 @@
     <ClInclude Include="src\OasisEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\OasisEngine\Window.h" />
     <ClInclude Include="src\OasisPCH.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="thirdpartylibs\glfw\include\GLFW\glfw3.h" />
@@ -605,7 +604,6 @@
     <ClCompile Include="src\OasisPCH.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>

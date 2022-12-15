@@ -12,6 +12,7 @@ namespace Oasis {
 		virtual void OnInit() {};
 		virtual void OnShutdown() {};
 		virtual void OnUpdate() {};
+		virtual void OnImGuiDraw() {};
 
 		virtual void HandleEvent(Event& event) {};
 		inline const std::string& GetName() const {

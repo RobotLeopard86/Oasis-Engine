@@ -24,6 +24,6 @@ namespace Oasis {
 		}
 	private:
 		std::vector<Layer*> layers;
-		std::vector<Layer*>::iterator insert;
+		unsigned int insert = 0;
 	};
 }

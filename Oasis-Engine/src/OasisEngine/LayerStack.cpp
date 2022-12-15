@@ -2,9 +2,7 @@
 #include "LayerStack.h"
 
 namespace Oasis {
-	LayerStack::LayerStack() {
-		insert = layers.begin();
-	}
+	LayerStack::LayerStack() {}
 
 	LayerStack::~LayerStack() {
 		for (Layer* layer : layers) {
@@ -13,7 +11,8 @@ namespace Oasis {
 	}
 
 	void LayerStack::PutLayer(Layer* layer) {
-		insert = layers.emplace(insert, layer);
+		layers.emplace(layers.begin() + insert, layer);
+		insert++;
 	}
 
 	void LayerStack::PutOverlayLayer(Layer* overlay) {
