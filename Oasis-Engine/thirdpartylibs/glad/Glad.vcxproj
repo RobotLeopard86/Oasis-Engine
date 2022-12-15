@@ -54,20 +54,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>Build\Glad\Debug-windows-x86_64\Binaries\</OutDir>
-    <IntDir>Build\Glad\Debug-windows-x86_64\CompilerData\</IntDir>
+    <OutDir>..\..\..\Build\Glad\Debug-windows-x86_64\Binaries\</OutDir>
+    <IntDir>..\..\..\Build\Glad\Debug-windows-x86_64\CompilerData\</IntDir>
     <TargetName>Glad</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>Build\Glad\Release-windows-x86_64\Binaries\</OutDir>
-    <IntDir>Build\Glad\Release-windows-x86_64\CompilerData\</IntDir>
+    <OutDir>..\..\..\Build\Glad\Release-windows-x86_64\Binaries\</OutDir>
+    <IntDir>..\..\..\Build\Glad\Release-windows-x86_64\CompilerData\</IntDir>
     <TargetName>Glad</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">
-    <OutDir>Build\Glad\Distribution-windows-x86_64\Binaries\</OutDir>
-    <IntDir>Build\Glad\Distribution-windows-x86_64\CompilerData\</IntDir>
+    <OutDir>..\..\..\Build\Glad\Distribution-windows-x86_64\Binaries\</OutDir>
+    <IntDir>..\..\..\Build\Glad\Distribution-windows-x86_64\CompilerData\</IntDir>
     <TargetName>Glad</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
@@ -97,7 +97,6 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MT %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -118,7 +117,6 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MT %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
