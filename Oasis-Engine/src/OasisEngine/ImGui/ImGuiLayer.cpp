@@ -33,7 +33,6 @@ namespace Oasis {
 		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-		io.ConfigViewportsNoDecoration = false;
 
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
 		succesfulImGuiInit = ImGui_ImplOpenGL3_Init("#version 410");
