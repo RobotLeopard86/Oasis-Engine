@@ -5,7 +5,7 @@
 #include "OasisEngine/Events/MouseEvent.h"
 #include "OasisEngine/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLRenderContext.h"
 
 namespace Oasis {
 	static bool glfwInitialized = false;
@@ -44,9 +44,10 @@ namespace Oasis {
 		}
 
 		window = glfwCreateWindow((int)props.width, (int)props.height, windowData.title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(window);
-		int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		OE_COREASSERT(gladStatus, "Glad refused to initialize!");
+		
+		renderContext = new OpenGLRenderContext(window);
+		renderContext->InitContext();
+		
 		glfwSetWindowUserPointer(window, &windowData);
 		SetVSyncEnabled(true);
 
@@ -84,7 +85,7 @@ namespace Oasis {
 				break;
 			}
 			case GLFW_REPEAT: {
-				//Note: GLFW has no repeat count. 1 is hardcoded. Repeat count may later be extractable.
+				//Note: GLFW has no repeat count. 1 is hardcoded. Repeat count may later be extractable with different API.
 				KeyPressedEvent event(lambdaKey, 1);
 				data.callback(event);
 				break;
@@ -129,7 +130,7 @@ namespace Oasis {
 
 	void WindowsWindow::OnUpdate() {
 		glfwPollEvents();
-		glfwSwapBuffers(window);
+		renderContext->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSyncEnabled(bool enabled) {

@@ -1365,6 +1365,8 @@
     <ClInclude Include="thirdpartylibs\glm\glm\vector_relational.hpp">
       <Filter>thirdpartylibs\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\Rendering\RenderContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRenderContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -1394,5 +1396,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRenderContext.cpp" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "OasisEngine/Window.h"
+#include "OasisEngine/Rendering/RenderContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -35,6 +36,7 @@ namespace Oasis {
 		virtual void Shutdown();
 
 		GLFWwindow* window;
+		RenderContext* renderContext;
 
 		struct WindowData {
 			std::string title;
