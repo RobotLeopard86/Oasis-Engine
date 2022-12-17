@@ -112,6 +112,7 @@ project "Oasis-Sandbox"
 		"%{IncludeDir.SPDLOG}",
 		"%{IncludeDir.GLM}",
 		"Oasis-Engine/src",
+		"Oasis-Engine/thirdpartylibs"
 	}
 
 	links {

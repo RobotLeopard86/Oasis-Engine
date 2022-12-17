@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>OE_PLATFORM_WIN;OE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Oasis-Engine\thirdpartylibs\spdlog\include;..\Oasis-Engine\thirdpartylibs\glm;..\Oasis-Engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>OE_PLATFORM_WIN;OE_DEBUG;IMGUI_API=__declspec(dllimport);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Oasis-Engine\thirdpartylibs\spdlog\include;..\Oasis-Engine\thirdpartylibs\glm;..\Oasis-Engine\src;..\Oasis-Engine\thirdpartylibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OE_PLATFORM_WIN;OE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Oasis-Engine\thirdpartylibs\spdlog\include;..\Oasis-Engine\thirdpartylibs\glm;..\Oasis-Engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Oasis-Engine\thirdpartylibs\spdlog\include;..\Oasis-Engine\thirdpartylibs\glm;..\Oasis-Engine\src;..\Oasis-Engine\thirdpartylibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OE_PLATFORM_WIN;OE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Oasis-Engine\thirdpartylibs\spdlog\include;..\Oasis-Engine\thirdpartylibs\glm;..\Oasis-Engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Oasis-Engine\thirdpartylibs\spdlog\include;..\Oasis-Engine\thirdpartylibs\glm;..\Oasis-Engine\src;..\Oasis-Engine\thirdpartylibs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

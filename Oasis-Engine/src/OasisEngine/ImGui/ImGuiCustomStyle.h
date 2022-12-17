@@ -66,8 +66,6 @@ namespace Oasis {
 		colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.35f);
 
 		style->FrameRounding = 5;
-		style->ChildRounding = 5;
-		style->WindowRounding = 5;
 		style->PopupRounding = 5;
 	}
 }

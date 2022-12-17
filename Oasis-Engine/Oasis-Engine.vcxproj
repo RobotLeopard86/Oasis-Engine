@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>OasisPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>OE_PLATFORM_WIN;OE_DLL;GLFW_INCLUDE_NONE;OE_DEBUG;OE_ALLOWASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OE_PLATFORM_WIN;OE_DLL;GLFW_INCLUDE_NONE;OE_DEBUG;OE_ALLOWASSERTS;IMGUI_API=__declspec(dllexport);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;thirdpartylibs\glfw\include;thirdpartylibs\glad\include;thirdpartylibs\imgui;thirdpartylibs\spdlog\include;thirdpartylibs\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
