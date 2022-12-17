@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef OE_PLATFORM_WIN
+#ifdef OE_DYNAMICLNK
 	#ifdef OE_DLL
 		#define OASIS_API __declspec(dllexport)
 	#else
 		#define OASIS_API __declspec(dllimport)
-	#endif
+#endif
+#else
+	#define OASIS_API
+#endif
 #else
 	#error Oasis Engine currently only supports Windows. Support for other operating systems may come in the future.
 #endif

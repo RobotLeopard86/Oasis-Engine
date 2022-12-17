@@ -2,6 +2,7 @@ project "Glad"
 	kind "StaticLib"
 	language "C"
 	staticruntime "on"
+	cdialect "C17"
 
 	targetdir ("../../../Build/%{prj.name}/" .. outputdir .. "/Binaries")
 	objdir ("../../../Build/%{prj.name}/" .. outputdir .. "/CompilerData")

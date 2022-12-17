@@ -23,15 +23,21 @@ include "Oasis-Engine/thirdpartylibs/imgui"
 
 project "Oasis-Engine"
 	location "Oasis-Engine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "Off"
+	staticruntime "On"
+	cppdialect "C++20"
+	cdialect "C17"
 
 	targetdir ("Build/%{prj.name}/" .. outputdir .. "/Binaries")
 	objdir ("Build/%{prj.name}/" .. outputdir .. "/CompilerData")
 
 	pchheader "OasisPCH.h"
 	pchsource "Oasis-Engine/src/OasisPCH.cpp"
+
+	defines {
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 
 	files {
 		"%{prj.name}/src/**.h",
@@ -60,18 +66,12 @@ project "Oasis-Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
-		cdialect "C17"
-		systemversion "10.0.22621.0"
+		systemversion "latest"
 
 		defines {
 			"OE_PLATFORM_WIN",
 			"OE_DLL",
-			"GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../Build/Oasis-Sandbox/" .. outputdir .. "/Binaries")
+			"GLFW_INCLUDE_NONE",
 		}
 
 	filter "configurations:Debug"
@@ -96,7 +96,9 @@ project "Oasis-Sandbox"
 	location "Oasis-Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "Off"
+	staticruntime "On"
+	cppdialect "C++20"
+	cdialect "C17"
 
 	targetdir ("Build/%{prj.name}/" .. outputdir .. "/Binaries")
 	objdir ("Build/%{prj.name}/" .. outputdir .. "/CompilerData")
@@ -120,9 +122,7 @@ project "Oasis-Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
-		cdialect "C17"
-		systemversion "10.0.22621.0"
+		systemversion "latest"
 
 		defines {
 			"OE_PLATFORM_WIN",

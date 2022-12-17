@@ -4,33 +4,33 @@
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Example Layer") {
-	}
+		: Layer("Example") {}
 
 	void OnUpdate() override {
-		if(Oasis::Input::IsKeyPressed(OE_KEY_TAB)) {
+		if (Oasis::Input::IsKeyPressed(OE_KEY_TAB)) {
 			OE_CLIENT_TRACE("You pressed the tab key!");
 		}
 	}
 
 	void OnImGuiDraw() override {
 		ImGui::Begin("Test");
-		ImGui::Text("Hello World!");
+		ImGui::Text("Hello World");
 		ImGui::End();
 	}
 
 	void HandleEvent(Oasis::Event& event) override {}
+
 };
 
-class Sandbox : public Oasis::Application {
+class Sandbox : public Oasis::Application
+{
 public:
 	Sandbox() {
 		PutLayer(new ExampleLayer());
 	}
-	
-	~Sandbox() {
 
-	}
+	~Sandbox() {}
+
 };
 
 Oasis::Application* Oasis::CreateApplication() {
