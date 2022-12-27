@@ -6,7 +6,7 @@
 namespace Oasis {
 	OpenGLRenderContext::OpenGLRenderContext(GLFWwindow* windowHandle)
 		: windowHandle(windowHandle) {
-		OE_COREASSERT(windowHandle, "Couldn't initialize OpenGL rendering context, the provided window handle is null.");
+		OE_COREASSERT(windowHandle, "Couldn't start OpenGL rendering context, the provided window handle is null.");
 	}
 
 	void OpenGLRenderContext::InitContext() {

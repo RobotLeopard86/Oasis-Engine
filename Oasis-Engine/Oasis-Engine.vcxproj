@@ -162,10 +162,10 @@
     <ClInclude Include="src\OasisEngine\LayerStack.h" />
     <ClInclude Include="src\OasisEngine\Log.h" />
     <ClInclude Include="src\OasisEngine\MouseButtonCodes.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRenderContext.h" />
     <ClInclude Include="src\OasisEngine\Rendering\RenderContext.h" />
     <ClInclude Include="src\OasisEngine\Window.h" />
     <ClInclude Include="src\OasisPCH.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRenderContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="thirdpartylibs\glfw\include\GLFW\glfw3.h" />
@@ -594,10 +594,10 @@
     <ClCompile Include="src\OasisEngine\Layer.cpp" />
     <ClCompile Include="src\OasisEngine\LayerStack.cpp" />
     <ClCompile Include="src\OasisEngine\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRenderContext.cpp" />
     <ClCompile Include="src\OasisPCH.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRenderContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>

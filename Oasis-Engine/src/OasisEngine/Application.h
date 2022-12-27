@@ -33,6 +33,8 @@ namespace Oasis {
 		bool applicationRunning = true;
 		LayerStack layerStack;
 
+		unsigned int vertexArray, vertexBuffer, indexBuffer;
+
 		static Application* instance;
 
 		bool OnWindowClose(WindowCloseEvent& wce);
