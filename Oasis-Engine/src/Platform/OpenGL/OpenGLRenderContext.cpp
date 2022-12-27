@@ -13,6 +13,11 @@ namespace Oasis {
 		glfwMakeContextCurrent(windowHandle);
 		int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		OE_COREASSERT(gladStatus, "Glad refused to initialize!");
+
+		OE_CORE_INFO("Oasis Engine OpenGL Information:");
+		OE_CORE_INFO("  Vendor: {0}", (const char*)glGetString(GL_VENDOR));
+		OE_CORE_INFO("  Renderer: {0}", (const char*)glGetString(GL_RENDERER));
+		OE_CORE_INFO("  Version: {0}", (const char*)glGetString(GL_VERSION));
 	}
 	void OpenGLRenderContext::SwapBuffers() {
 		glfwSwapBuffers(windowHandle);
