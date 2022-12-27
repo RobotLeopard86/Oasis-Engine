@@ -11,9 +11,9 @@ namespace Oasis {
 
 		colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
 		colors[ImGuiCol_TextDisabled] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
-		colors[ImGuiCol_WindowBg] = ImVec4(0.17578125f, 0.19921875f, 0.21484375f, 0.94f);
+		colors[ImGuiCol_WindowBg] = ImVec4(0.17578125f, 0.19921875f, 0.21484375f, 1.00f);
 		colors[ImGuiCol_ChildBg] = ImVec4(0.00f, 0.00f, 0.10f, 0.00f);
-		colors[ImGuiCol_PopupBg] = ImVec4(0.08f, 0.08f, 0.15f, 0.94f);
+		colors[ImGuiCol_PopupBg] = ImVec4(0.08f, 0.08f, 0.15f, 0.85f);
 		colors[ImGuiCol_Border] = ImVec4(0.43f, 0.43f, 0.50f, 0.50f);
 		colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 		colors[ImGuiCol_FrameBg] = ImVec4(0.18f, 0.72f, 0.90f, 0.54f);
