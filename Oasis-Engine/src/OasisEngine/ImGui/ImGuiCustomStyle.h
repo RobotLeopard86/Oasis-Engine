@@ -4,7 +4,6 @@
 #include "imgui_internal.h"
 
 namespace Oasis {
-
 	void ImGuiStyleOasis() {
 		ImGuiStyle* style = &ImGui::GetStyle();
 		ImVec4* colors = style->Colors;

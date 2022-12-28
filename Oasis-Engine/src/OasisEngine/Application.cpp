@@ -24,38 +24,62 @@ namespace Oasis {
 		glGenVertexArrays(1, &vertexArray);
 		glBindVertexArray(vertexArray);
 
-		glGenBuffers(1, &vertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-
 		float vertices[3 * 3]{
 			-0.5f, -0.5f, 0.0f,
 			0.5f, -0.5f, 0.0f,
 			0.0f, 0.5f, 0.0f
 		};
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer->Bind();
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-
-		glGenBuffers(1, &indexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
 		
-		unsigned int indices[3]{
+		uint32_t indices[3]{
 			0, 1, 2
 		};
 
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		indexBuffer->Bind();
+
+		std::string vertexSrc = R"(
+			#version 330 core
+
+			layout(location=0) in vec3 pos;
+
+			out vec3 vertexPos;
+
+			void main() {
+				vertexPos = pos;
+				gl_Position = vec4(pos, 1.0);
+			}
+		)";
+
+		std::string fragmentSrc = R"(
+			#version 330 core
+
+			layout(location=0) out vec4 color;
+
+			in vec3 vertexPos;
+
+			void main() {
+				color = vec4((vertexPos + 0.15) * 2.75, 1.0);
+			}
+		)";
+
+		shader.reset(new Shader(vertexSrc, fragmentSrc));
 	}
 	Application::~Application() {}
 
 	void Application::Run() {
 		while(applicationRunning) {
-			glClearColor(0, 0.3984375, 0.796875, 0.5);
+			glClearColor(0.15, 0.15, 0.15, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			shader->Bind();
 			glBindVertexArray(vertexArray);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, indexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for(Layer* layer : layerStack) {
 				layer->OnUpdate();

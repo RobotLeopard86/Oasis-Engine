@@ -5,6 +5,8 @@
 #include "LayerStack.h"
 #include "Events/ApplicationEvent.h"
 #include "ImGui/ImGuiLayer.h"
+#include "Rendering/Shader.h"
+#include "Rendering/Buffer.h"
 
 namespace Oasis {
 
@@ -33,9 +35,13 @@ namespace Oasis {
 		bool applicationRunning = true;
 		LayerStack layerStack;
 
-		unsigned int vertexArray, vertexBuffer, indexBuffer;
+		unsigned int vertexArray;
+		std::unique_ptr<VertexBuffer> vertexBuffer;
+		std::unique_ptr<IndexBuffer> indexBuffer;
 
 		static Application* instance;
+
+		std::unique_ptr<Shader> shader;
 
 		bool OnWindowClose(WindowCloseEvent& wce);
 	};

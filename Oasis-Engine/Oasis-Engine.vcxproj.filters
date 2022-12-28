@@ -1377,6 +1377,10 @@
     <ClInclude Include="thirdpartylibs\glm\glm\vector_relational.hpp">
       <Filter>thirdpartylibs\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\Rendering\Shader.h" />
+    <ClInclude Include="src\OasisEngine\Rendering\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\OasisEngine\Rendering\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -1409,5 +1413,9 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\OasisEngine\Rendering\Shader.cpp" />
+    <ClCompile Include="src\OasisEngine\Rendering\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\OasisEngine\Rendering\Renderer.cpp" />
   </ItemGroup>
 </Project>
