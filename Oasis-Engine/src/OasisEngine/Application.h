@@ -7,6 +7,7 @@
 #include "ImGui/ImGuiLayer.h"
 #include "Rendering/Shader.h"
 #include "Rendering/Buffer.h"
+#include "Rendering/VertexArray.h"
 
 namespace Oasis {
 
@@ -35,13 +36,13 @@ namespace Oasis {
 		bool applicationRunning = true;
 		LayerStack layerStack;
 
-		unsigned int vertexArray;
-		std::unique_ptr<VertexBuffer> vertexBuffer;
-		std::unique_ptr<IndexBuffer> indexBuffer;
+		std::shared_ptr<VertexArray> vertexArray;
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		std::shared_ptr<IndexBuffer> indexBuffer;
 
 		static Application* instance;
 
-		std::unique_ptr<Shader> shader;
+		std::shared_ptr<Shader> shader;
 
 		bool OnWindowClose(WindowCloseEvent& wce);
 	};

@@ -11,25 +11,6 @@ namespace Oasis {
 
 	Application* Application::instance = nullptr;
 
-	static GLenum ShaderDataTypeToGLBaseType(ShaderDataType type) {
-		switch(type) {
-		case ShaderDataType::Float: return GL_FLOAT;
-		case ShaderDataType::Float2: return GL_FLOAT;
-		case ShaderDataType::Float3: return GL_FLOAT;
-		case ShaderDataType::Float4: return GL_FLOAT;
-		case ShaderDataType::Int: return GL_INT;
-		case ShaderDataType::Int2: return GL_INT;
-		case ShaderDataType::Int3: return GL_INT;
-		case ShaderDataType::Int4: return GL_INT;
-		case ShaderDataType::Mat3: return GL_FLOAT;
-		case ShaderDataType::Mat4: return GL_FLOAT;
-		case ShaderDataType::Boolean: return GL_BOOL;
-		}
-
-		OE_COREASSERT(false, "Can't convert unrecognized shader data type to OpenGL base type!");
-		return 0;
-	}
-
 	Application::Application() {
 		OE_COREASSERT(!instance, "Application instance already exists!");
 		instance = this;
@@ -40,39 +21,34 @@ namespace Oasis {
 		imguiLayer = new ImGuiLayer();
 		PutOverlayLayer(imguiLayer);
 
-		glGenVertexArrays(1, &vertexArray);
-		glBindVertexArray(vertexArray);
+		vertexArray.reset(VertexArray::Create());
 
-		float vertices[3 * 7]{
+		float vertices[4 * 7]{
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.796875f, 0.0f, 1.0f,
 			0.5f, -0.5f, 0.0f, 0.1015625f, 0.63671875f, 1.0f, 1.0f,
-			0.0f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f
+			-0.5f, 0.5f, 0.0f, 0.71875f, 0.30078125f, 0.99609375f, 1.0f,
+			0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f
 		};
 
 		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		vertexBuffer->Bind();
-		{
-			BufferLayout layout = {
-				{ ShaderDataType::Float3, "pos" },
-				{ ShaderDataType::Float4, "color" }
-			};
 
-			vertexBuffer->SetLayout(layout);
-		}
+		BufferLayout layout = {
+			{ ShaderDataType::Float3, "pos" },
+			{ ShaderDataType::Float4, "color" }
+		};
 
-		uint32_t idx = 0;
-		for(const auto& elem : vertexBuffer->GetLayout().GetBufferElements()) {
-			glEnableVertexAttribArray(idx);
-			glVertexAttribPointer(idx, elem.GetComponentCount(), ShaderDataTypeToGLBaseType(elem.type), elem.normalized ? GL_TRUE : GL_FALSE, vertexBuffer->GetLayout().GetStride(), (const void*)elem.offset);
-			idx++;
-		}
+		vertexBuffer->SetLayout(layout);
+
+		vertexArray->AddVertexBuffer(vertexBuffer);
 		
-		uint32_t indices[3]{
-			0, 1, 2
+		uint32_t indices[3 * 2]{
+			2, 1, 0,
+			2, 3, 1
 		};
 
 		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		indexBuffer->Bind();
+
+		vertexArray->SetIndexBuffer(indexBuffer);
 
 		std::string vertexSrc = R"(
 			#version 330 core
@@ -110,7 +86,7 @@ namespace Oasis {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			shader->Bind();
-			glBindVertexArray(vertexArray);
+			vertexArray->Bind();
 			glDrawElements(GL_TRIANGLES, indexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for(Layer* layer : layerStack) {
