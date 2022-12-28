@@ -10,8 +10,12 @@ namespace Oasis {
 
 		void Bind() const override;
 		void Unbind() const override;
+
+		void SetLayout(const BufferLayout& newLayout) override { layout = newLayout; };
+		const BufferLayout& GetLayout() const override { return layout; }
 	private:
 		uint32_t renderId;
+		BufferLayout layout;
 	};
 
 	class OpenGLIndexBuffer : public IndexBuffer {

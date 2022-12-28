@@ -11,6 +11,25 @@ namespace Oasis {
 
 	Application* Application::instance = nullptr;
 
+	static GLenum ShaderDataTypeToGLBaseType(ShaderDataType type) {
+		switch(type) {
+		case ShaderDataType::Float: return GL_FLOAT;
+		case ShaderDataType::Float2: return GL_FLOAT;
+		case ShaderDataType::Float3: return GL_FLOAT;
+		case ShaderDataType::Float4: return GL_FLOAT;
+		case ShaderDataType::Int: return GL_INT;
+		case ShaderDataType::Int2: return GL_INT;
+		case ShaderDataType::Int3: return GL_INT;
+		case ShaderDataType::Int4: return GL_INT;
+		case ShaderDataType::Mat3: return GL_FLOAT;
+		case ShaderDataType::Mat4: return GL_FLOAT;
+		case ShaderDataType::Boolean: return GL_BOOL;
+		}
+
+		OE_COREASSERT(false, "Can't convert unrecognized shader data type to OpenGL base type!");
+		return 0;
+	}
+
 	Application::Application() {
 		OE_COREASSERT(!instance, "Application instance already exists!");
 		instance = this;
@@ -24,17 +43,29 @@ namespace Oasis {
 		glGenVertexArrays(1, &vertexArray);
 		glBindVertexArray(vertexArray);
 
-		float vertices[3 * 3]{
-			-0.5f, -0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f
+		float vertices[3 * 7]{
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.796875f, 0.0f, 1.0f,
+			0.5f, -0.5f, 0.0f, 0.1015625f, 0.63671875f, 1.0f, 1.0f,
+			0.0f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f
 		};
 
 		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 		vertexBuffer->Bind();
+		{
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "pos" },
+				{ ShaderDataType::Float4, "color" }
+			};
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+			vertexBuffer->SetLayout(layout);
+		}
+
+		uint32_t idx = 0;
+		for(const auto& elem : vertexBuffer->GetLayout().GetBufferElements()) {
+			glEnableVertexAttribArray(idx);
+			glVertexAttribPointer(idx, elem.GetComponentCount(), ShaderDataTypeToGLBaseType(elem.type), elem.normalized ? GL_TRUE : GL_FALSE, vertexBuffer->GetLayout().GetStride(), (const void*)elem.offset);
+			idx++;
+		}
 		
 		uint32_t indices[3]{
 			0, 1, 2
@@ -47,11 +78,12 @@ namespace Oasis {
 			#version 330 core
 
 			layout(location=0) in vec3 pos;
+			layout(location=1) in vec4 color;
 
-			out vec3 vertexPos;
+			out vec4 vertexColor;
 
 			void main() {
-				vertexPos = pos;
+				vertexColor = color;
 				gl_Position = vec4(pos, 1.0);
 			}
 		)";
@@ -61,10 +93,10 @@ namespace Oasis {
 
 			layout(location=0) out vec4 color;
 
-			in vec3 vertexPos;
+			in vec4 vertexColor;
 
 			void main() {
-				color = vec4((vertexPos + 0.15) * 2.75, 1.0);
+				color = vertexColor;
 			}
 		)";
 
