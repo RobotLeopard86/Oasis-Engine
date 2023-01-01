@@ -3,9 +3,7 @@
 #include "Application.h"
 #include "Input.h"
 #include "Keycodes.h"
-
-#include <GLFW/glfw3.h>
-#include <glad/glad.h>
+#include "Rendering/RenderJob.h"
 
 namespace Oasis {
 
@@ -27,9 +25,9 @@ namespace Oasis {
 			0.25f, 0.75f, 0.0f, 0.8984375f, 0.0f, 0.0f, 1.0f,
 			-0.25f, 0.75f, 0.0f, 0.99609375f, 0.45703125f, 0.1015625f, 1.0f,
 			-0.5f, 0.0f, 0.0f, 0.99609375f, 0.796875f, 0.0f, 1.0f,
-			0.5f, 0.0f, 0.0f, 0.19921875f, 0.796875f, 0.19921875f, 1.0f,
+			0.5f, 0.0f, 0.0f, 0.671875f, 0.0f, 0.8984375f, 1.0f,
 			0.25f, -0.75f, 0.0f, 0.0f, 0.44921875f, 0.8984375f, 1.0f,
-			-0.25f, -0.75f, 0.0f, 0.671875f, 0.0f, 0.8984375f, 1.0f
+			-0.25f, -0.75f, 0.0f, 0.19921875f, 0.796875f, 0.19921875f, 1.0f
 		};
 
 		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
@@ -81,17 +79,18 @@ namespace Oasis {
 		)";
 
 		shader.reset(new Shader(vertexSrc, fragmentSrc));
+
+		RenderJob::SetClearColor({ 0.15, 0.15, 0.15, 1.0 });
 	}
 	Application::~Application() {}
 
 	void Application::Run() {
 		while(applicationRunning) {
-			glClearColor(0.15, 0.15, 0.15, 1.0);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderJob::ClearScreen();
 
 			shader->Bind();
 			vertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, indexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			RenderJob::DrawIndexed(vertexArray);
 
 			for(Layer* layer : layerStack) {
 				layer->OnUpdate();

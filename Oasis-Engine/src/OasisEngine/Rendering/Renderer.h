@@ -1,17 +1,17 @@
 #pragma once
 
-namespace Oasis {
-	enum class RenderBackend {
-		None = 0,
-		OpenGL = 1
-	};
+#include "RendererAPI.h"
 
+namespace Oasis {
 	class Renderer {
 	public:
-		inline static RenderBackend GetRenderBackend() {
-			return backend;
-		}
+		static void StartScene();
+		static void ConcludeScene();
+
+		static void SubmitRawGeometry(const std::shared_ptr<VertexArray>& vertexArray);
+
+		inline static RendererAPI::RenderBackend GetRenderBackend() { return RendererAPI::GetBackend(); }
 	private:
-		static RenderBackend backend;
+		static bool allowSubmissions;
 	};
 }
