@@ -80,8 +80,5 @@ namespace Oasis {
 		}
 	}
 
-	void ImGuiLayer::OnImGuiDraw() {
-		static bool showDemoWindow = true;
-		ImGui::ShowDemoWindow(&showDemoWindow);
-	}
+	void ImGuiLayer::OnImGuiDraw() {}
 }

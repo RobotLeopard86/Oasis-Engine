@@ -5,10 +5,6 @@
 #include "LayerStack.h"
 #include "Events/ApplicationEvent.h"
 #include "ImGui/ImGuiLayer.h"
-#include "Rendering/Shader.h"
-#include "Rendering/Buffer.h"
-#include "Rendering/VertexArray.h"
-#include "Rendering/Cameras/OrthographicCamera.h"
 
 namespace Oasis {
 
@@ -37,15 +33,7 @@ namespace Oasis {
 		bool applicationRunning = true;
 		LayerStack layerStack;
 
-		std::shared_ptr<VertexArray> vertexArray;
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		std::shared_ptr<IndexBuffer> indexBuffer;
-
-		OrthographicCamera cam;
-
 		static Application* instance;
-
-		std::shared_ptr<Shader> shader;
 
 		bool OnWindowClose(WindowCloseEvent& wce);
 	};
