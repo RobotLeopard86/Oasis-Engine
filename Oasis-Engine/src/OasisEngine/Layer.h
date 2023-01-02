@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Core/Timestep.h"
 #include "Events/Event.h"
 
 namespace Oasis {
@@ -11,8 +12,8 @@ namespace Oasis {
 
 		virtual void OnInit() {};
 		virtual void OnShutdown() {};
-		virtual void OnUpdate() {};
-		virtual void OnImGuiDraw() {};
+		virtual void OnUpdate(Timestep step) {};
+		virtual void OnImGuiDraw(Oasis::Timestep step) {};
 
 		virtual void HandleEvent(Event& event) {};
 		inline const std::string& GetName() const {

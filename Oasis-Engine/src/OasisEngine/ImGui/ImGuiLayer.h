@@ -13,7 +13,7 @@ namespace Oasis {
 
 		void OnInit() override;
 		void OnShutdown() override;
-		void OnImGuiDraw() override;
+		void OnImGuiDraw(Oasis::Timestep step) override;
 
 		void Begin();
 		void End();

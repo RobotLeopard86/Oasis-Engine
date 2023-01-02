@@ -3,31 +3,37 @@
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Sandbox"), cam(-1.6f, 1.6f, -0.9f, 0.9f), camPosition(0.0f), camRotation(0.0f), camSpeed(0.05f), camRotSpeed(2.0f) {}
+		: Layer("Sandbox"), cam(-1.6f, 1.6f, -0.9f, 0.9f), camPosition(0.0f), camRotation(0.0f), camSpeed(1.0f), camRotSpeed(2.0f) {}
 
-	void OnUpdate() override {
+	void OnUpdate(Oasis::Timestep step) override {
+		OE_CLIENT_TRACE("Delta time: {0} seconds ({1} milliseconds)", step.GetSeconds(), step.GetMilliseconds());
+
 		if(Oasis::Input::IsKeyPressed(OE_KEY_W)) {
-			camPosition.y -= camSpeed;
+			camPosition.y -= camSpeed * step;
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_S)) {
-			camPosition.y += camSpeed;
+			camPosition.y += camSpeed * step;
 		}
 		
 		if(Oasis::Input::IsKeyPressed(OE_KEY_A)) {
-			camPosition.x -= camSpeed;
+			camPosition.x -= camSpeed * step;
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_D)) {
-			camPosition.x += camSpeed;
+			camPosition.x += camSpeed * step;
 		}
 		
-		if (Oasis::Input::IsKeyPressed(OE_KEY_R)) {
+		if(Oasis::Input::IsKeyPressed(OE_KEY_R)) {
 			camPosition = glm::vec3(0.0f);
 			camRotation = 0.0f;
+		} else if(Oasis::Input::IsKeyPressed(OE_KEY_Z)) {
+			camRotation = 0.0f;
+		} else if(Oasis::Input::IsKeyPressed(OE_KEY_C)) {
+			camPosition = glm::vec3(0.0f);
 		}
 
-		if (Oasis::Input::IsKeyPressed(OE_KEY_E)) {
+		if(Oasis::Input::IsKeyPressed(OE_KEY_E)) {
 			camRotation -= camRotSpeed;
 			if(camRotation < 1) camRotation = 360;
 		}
-		else if (Oasis::Input::IsKeyPressed(OE_KEY_Q)) {
+		else if(Oasis::Input::IsKeyPressed(OE_KEY_Q)) {
 			camRotation += camRotSpeed;
 			if(camRotation > 359) camRotation = 0;
 		}
@@ -40,9 +46,21 @@ public:
 		Oasis::Renderer::ConcludeScene();
 	}
 
-	void OnImGuiDraw() override {
+	void OnImGuiDraw(Oasis::Timestep step) override {
 		ImGui::Begin("Controls");
-		ImGui::Text("WASD to move, E and Q to rotate, R to reset");
+		ImGui::Text("WASD to move,\nE and Q to rotate,\nR to reset everything,\nC to reset position,\nZ to reset rotation");
+		ImGui::End();
+
+		float seconds = step.GetSeconds();
+		float milliseconds = step.GetMilliseconds();
+		float fps = 1000 / milliseconds;
+
+		std::stringstream ss;
+		ss << "Delta time (seconds): " << seconds << "\nDelta time(milliseconds): " << milliseconds << "\nFPS: " << fps;
+
+		ImGui::SetNextWindowPos(ImVec2(150, 500), ImGuiCond_Once);
+		ImGui::Begin("Timing");
+		ImGui::Text(ss.str().c_str());
 		ImGui::End();
 	}
 

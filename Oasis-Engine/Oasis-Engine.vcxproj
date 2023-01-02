@@ -149,6 +149,10 @@
     <ClInclude Include="src\Oasis.h" />
     <ClInclude Include="src\OasisEngine\Application.h" />
     <ClInclude Include="src\OasisEngine\Core.h" />
+    <ClInclude Include="src\OasisEngine\Core\Timestep.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\OasisEngine\Entrypoint.h" />
     <ClInclude Include="src\OasisEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\OasisEngine\Events\Event.h" />
@@ -162,6 +166,10 @@
     <ClInclude Include="src\OasisEngine\LayerStack.h" />
     <ClInclude Include="src\OasisEngine\Log.h" />
     <ClInclude Include="src\OasisEngine\MouseButtonCodes.h" />
+    <ClInclude Include="src\OasisEngine\PlatformFunctions.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\OasisEngine\Rendering\Buffer.h" />
     <ClInclude Include="src\OasisEngine\Rendering\Cameras\OrthographicCamera.h" />
     <ClInclude Include="src\OasisEngine\Rendering\RenderContext.h" />
@@ -177,6 +185,10 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsPlatformFunctions.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="thirdpartylibs\glfw\include\GLFW\glfw3.h" />
     <ClInclude Include="thirdpartylibs\glfw\include\GLFW\glfw3native.h" />
@@ -619,6 +631,10 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformFunctions.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>

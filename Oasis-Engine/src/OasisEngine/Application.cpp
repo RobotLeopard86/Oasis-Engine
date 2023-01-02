@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Input.h"
 #include "Keycodes.h"
+#include "PlatformFunctions.h"
 
 namespace Oasis {
 
@@ -22,13 +23,17 @@ namespace Oasis {
 
 	void Application::Run() {
 		while(applicationRunning) {
+			float time = PlatformFunctions::GetFrameTime();
+			Timestep timestep = time - lastFrameTime;
+			lastFrameTime = time;
+
 			for(Layer* layer : layerStack) {
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			imguiLayer->Begin();
 			for (Layer* layer : layerStack) {
-				layer->OnImGuiDraw();
+				layer->OnImGuiDraw(timestep);
 			}
 			imguiLayer->End();
 

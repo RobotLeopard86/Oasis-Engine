@@ -5,6 +5,7 @@
 #include "LayerStack.h"
 #include "Events/ApplicationEvent.h"
 #include "ImGui/ImGuiLayer.h"
+#include "Core/Timestep.h"
 
 namespace Oasis {
 
@@ -32,6 +33,8 @@ namespace Oasis {
 		ImGuiLayer* imguiLayer;
 		bool applicationRunning = true;
 		LayerStack layerStack;
+
+		float lastFrameTime;
 
 		static Application* instance;
 

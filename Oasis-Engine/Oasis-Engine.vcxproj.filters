@@ -7,6 +7,9 @@
     <Filter Include="src\OasisEngine">
       <UniqueIdentifier>{9109262B-FD94-93EF-06A6-16E472B0EFEF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\OasisEngine\Core">
+      <UniqueIdentifier>{89D00867-755F-9230-1E7E-A62B0AECA2D6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\OasisEngine\Events">
       <UniqueIdentifier>{5528A151-4122-CAA3-2A8F-60B416283010}</UniqueIdentifier>
     </Filter>
@@ -1410,6 +1413,9 @@
     <ClInclude Include="thirdpartylibs\glm\glm\vector_relational.hpp">
       <Filter>thirdpartylibs\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\OasisEngine\Core\Timestep.h" />
+    <ClInclude Include="src\OasisEngine\PlatformFunctions.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsPlatformFunctions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -1472,5 +1478,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformFunctions.cpp" />
   </ItemGroup>
 </Project>

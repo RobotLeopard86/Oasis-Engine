@@ -80,5 +80,5 @@ namespace Oasis {
 		}
 	}
 
-	void ImGuiLayer::OnImGuiDraw() {}
+	void ImGuiLayer::OnImGuiDraw(Oasis::Timestep step) {}
 }
