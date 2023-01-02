@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Keycodes.h"
 #include "Rendering/RenderJob.h"
+#include "Rendering/Renderer.h"
 
 namespace Oasis {
 
@@ -86,11 +87,12 @@ namespace Oasis {
 
 	void Application::Run() {
 		while(applicationRunning) {
-			RenderJob::ClearScreen();
-
 			shader->Bind();
 			vertexArray->Bind();
-			RenderJob::DrawIndexed(vertexArray);
+
+			Renderer::StartScene();
+			Renderer::SubmitRawGeometry(vertexArray);
+			Renderer::ConcludeScene();
 
 			for(Layer* layer : layerStack) {
 				layer->OnUpdate();
