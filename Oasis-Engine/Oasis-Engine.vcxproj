@@ -163,6 +163,7 @@
     <ClInclude Include="src\OasisEngine\Log.h" />
     <ClInclude Include="src\OasisEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\OasisEngine\Rendering\Buffer.h" />
+    <ClInclude Include="src\OasisEngine\Rendering\Cameras\OrthographicCamera.h" />
     <ClInclude Include="src\OasisEngine\Rendering\RendererAPI.h" />
     <ClInclude Include="src\OasisEngine\Rendering\RenderContext.h" />
     <ClInclude Include="src\OasisEngine\Rendering\Renderer.h" />
@@ -604,6 +605,7 @@
     <ClCompile Include="src\OasisEngine\LayerStack.cpp" />
     <ClCompile Include="src\OasisEngine\Log.cpp" />
     <ClCompile Include="src\OasisEngine\Rendering\Buffer.cpp" />
+    <ClCompile Include="src\OasisEngine\Rendering\Cameras\OrthographicCamera.cpp" />
     <ClCompile Include="src\OasisEngine\Rendering\Renderer.cpp" />
     <ClCompile Include="src\OasisEngine\Rendering\RendererAPI.cpp" />
     <ClCompile Include="src\OasisEngine\Rendering\RenderJob.cpp" />

@@ -2,6 +2,7 @@
 #include "Shader.h"
 
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace Oasis {
 	Shader::Shader(std::string& vertexSrc, std::string fragmentSrc) {
@@ -80,5 +81,13 @@ namespace Oasis {
 
 	void Shader::Unbind() const {
 		glDeleteProgram(renderId);
+	}
+	void Shader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix) {
+		GLint uniformLocation = glGetUniformLocation(renderId, name.c_str());
+		if(uniformLocation == -1) {
+			OE_COREASSERT(false, "Cannot upload data to nonexistent uniform!");
+			return;
+		}
+		glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 }

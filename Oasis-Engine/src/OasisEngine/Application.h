@@ -8,6 +8,7 @@
 #include "Rendering/Shader.h"
 #include "Rendering/Buffer.h"
 #include "Rendering/VertexArray.h"
+#include "Rendering/Cameras/OrthographicCamera.h"
 
 namespace Oasis {
 
@@ -39,6 +40,8 @@ namespace Oasis {
 		std::shared_ptr<VertexArray> vertexArray;
 		std::shared_ptr<VertexBuffer> vertexBuffer;
 		std::shared_ptr<IndexBuffer> indexBuffer;
+
+		OrthographicCamera cam;
 
 		static Application* instance;
 

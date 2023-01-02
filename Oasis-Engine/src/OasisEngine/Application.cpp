@@ -10,7 +10,8 @@ namespace Oasis {
 
 	Application* Application::instance = nullptr;
 
-	Application::Application() {
+	Application::Application() 
+		: cam(-1.6f, 1.6f, -0.9f, 0.9f) {
 		OE_COREASSERT(!instance, "Application instance already exists!");
 		instance = this;
 
@@ -23,12 +24,12 @@ namespace Oasis {
 		vertexArray.reset(VertexArray::Create());
 
 		float vertices[6 * 7]{
-			0.25f, 0.75f, 0.0f, 0.8984375f, 0.0f, 0.0f, 1.0f,
-			-0.25f, 0.75f, 0.0f, 0.99609375f, 0.45703125f, 0.1015625f, 1.0f,
-			-0.5f, 0.0f, 0.0f, 0.99609375f, 0.796875f, 0.0f, 1.0f,
-			0.5f, 0.0f, 0.0f, 0.671875f, 0.0f, 0.8984375f, 1.0f,
-			0.25f, -0.75f, 0.0f, 0.0f, 0.44921875f, 0.8984375f, 1.0f,
-			-0.25f, -0.75f, 0.0f, 0.19921875f, 0.796875f, 0.19921875f, 1.0f
+			0.4375f, 0.75f, 0.0f, 0.8984375f, 0.0f, 0.0f, 1.0f,
+			-0.4375f, 0.75f, 0.0f, 0.99609375f, 0.45703125f, 0.1015625f, 1.0f,
+			-0.85f, 0.0f, 0.0f, 0.99609375f, 0.796875f, 0.0f, 1.0f,
+			0.85f, 0.0f, 0.0f, 0.671875f, 0.0f, 0.8984375f, 1.0f,
+			0.4375f, -0.75f, 0.0f, 0.0f, 0.44921875f, 0.8984375f, 1.0f,
+			-0.4375f, -0.75f, 0.0f, 0.19921875f, 0.796875f, 0.19921875f, 1.0f
 		};
 
 		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
@@ -59,11 +60,13 @@ namespace Oasis {
 			layout(location=0) in vec3 pos;
 			layout(location=1) in vec4 color;
 
+			uniform mat4 vpm;
+
 			out vec4 vertexColor;
 
 			void main() {
 				vertexColor = color;
-				gl_Position = vec4(pos, 1.0);
+				gl_Position = vpm * vec4(pos, 1.0);
 			}
 		)";
 
@@ -87,11 +90,12 @@ namespace Oasis {
 
 	void Application::Run() {
 		while(applicationRunning) {
-			shader->Bind();
-			vertexArray->Bind();
 
-			Renderer::StartScene();
-			Renderer::SubmitRawGeometry(vertexArray);
+			cam.SetPosition({ 0.0f, 0.5f, 0.0f });
+			cam.SetRotation(45.0);
+
+			Renderer::StartScene(cam);
+			Renderer::SubmitRawGeometry(vertexArray, shader);
 			Renderer::ConcludeScene();
 
 			for(Layer* layer : layerStack) {

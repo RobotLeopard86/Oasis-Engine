@@ -1386,6 +1386,7 @@
     <ClInclude Include="src\OasisEngine\Rendering\RendererAPI.h" />
     <ClInclude Include="src\OasisEngine\Rendering\RenderJob.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\OasisEngine\Rendering\Cameras\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -1427,5 +1428,6 @@
     <ClCompile Include="src\OasisEngine\Rendering\RendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\OasisEngine\Rendering\RenderJob.cpp" />
+    <ClCompile Include="src\OasisEngine\Rendering\Cameras\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>
