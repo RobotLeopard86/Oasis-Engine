@@ -3,11 +3,10 @@
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Sandbox"), cam(-1.6f, 1.6f, -0.9f, 0.9f), camPosition(0.0f), camRotation(0.0f), camSpeed(1.0f), camRotSpeed(2.0f) {}
+		: Layer("Sandbox"), cam(-1.6f, 1.6f, -0.9f, 0.9f), camPosition(0.0f), camRotation(0.0f), camSpeed(1.0f),
+		camRotSpeed(2.0f), lastSecondTime(0.0f), fps(0.0f), frameCount(0), lastDeltaSeconds(0.0f) {}
 
 	void OnUpdate(Oasis::Timestep step) override {
-		OE_CLIENT_TRACE("Delta time: {0} seconds ({1} milliseconds)", step.GetSeconds(), step.GetMilliseconds());
-
 		if(Oasis::Input::IsKeyPressed(OE_KEY_W)) {
 			camPosition.y -= camSpeed * step;
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_S)) {
@@ -47,21 +46,42 @@ public:
 	}
 
 	void OnImGuiDraw(Oasis::Timestep step) override {
+		frameCount++;
+
 		ImGui::Begin("Controls");
 		ImGui::Text("WASD to move,\nE and Q to rotate,\nR to reset everything,\nC to reset position,\nZ to reset rotation");
 		ImGui::End();
 
-		float seconds = step.GetSeconds();
-		float milliseconds = step.GetMilliseconds();
-		float fps = 1000 / milliseconds;
+		float elapsed = Oasis::PlatformFunctions::GetElapsedTime();
+		
+		if(elapsed >= lastSecondTime + 1.0f) {
+			fps = frameCount;
+			frameCount = 0;
+			lastSecondTime = elapsed;
+			lastDeltaSeconds = step.GetSeconds();
+		}
 
 		std::stringstream ss;
-		ss << "Delta time (seconds): " << seconds << "\nDelta time(milliseconds): " << milliseconds << "\nFPS: " << fps;
+		ss << "Delta time (seconds): " << lastDeltaSeconds << "\nDelta time (milliseconds): " << lastDeltaSeconds * 1000 << "\nFPS: " << fps << "\nVSync Enabled: " << BoolToYesNo(Oasis::Application::Get().GetWindow().IsVSyncEnabled());
 
 		ImGui::SetNextWindowPos(ImVec2(150, 500), ImGuiCond_Once);
+		ImGui::SetNextWindowSize(ImVec2(250, 150), ImGuiCond_Once);
 		ImGui::Begin("Timing");
 		ImGui::Text(ss.str().c_str());
+		
+		if(ImGui::Button("Toggle VSync Enabled")) {
+			Oasis::Application::Get().GetWindow().SetVSyncEnabled(!Oasis::Application::Get().GetWindow().IsVSyncEnabled());
+		}
+
 		ImGui::End();
+	}
+
+	std::string BoolToYesNo(bool input) {
+		if(input) {
+			return "Yes";
+		} else {
+			return "No";
+		}
 	}
 
 	void OnInit() override {
@@ -143,6 +163,12 @@ private:
 	float camRotation;
 	float camSpeed;
 	float camRotSpeed;
+
+	float lastSecondTime;
+	float lastDeltaSeconds;
+
+	int fps;
+	int frameCount;
 };
 
 class Sandbox : public Oasis::Application

@@ -23,7 +23,7 @@ namespace Oasis {
 
 	void Application::Run() {
 		while(applicationRunning) {
-			float time = PlatformFunctions::GetFrameTime();
+			float time = PlatformFunctions::GetElapsedTime();
 			Timestep timestep = time - lastFrameTime;
 			lastFrameTime = time;
 

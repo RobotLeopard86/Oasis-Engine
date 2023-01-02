@@ -3,11 +3,11 @@
 namespace Oasis {
 	class PlatformFunctions {
 	public:
-		inline static float GetFrameTime() {
-			return instance->GetFrameTime_Impl();
+		inline static float GetElapsedTime() {
+			return instance->GetElapsedTime_Impl();
 		}
 	protected:
-		virtual float GetFrameTime_Impl() = 0;
+		virtual float GetElapsedTime_Impl() = 0;
 	private:
 		static PlatformFunctions* instance;
 	};

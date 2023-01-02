@@ -5,6 +5,6 @@
 namespace Oasis {
 	class WindowsPlatformFunctions : public PlatformFunctions {
 	protected:
-		float GetFrameTime_Impl() override;
+		float GetElapsedTime_Impl() override;
 	};
 }

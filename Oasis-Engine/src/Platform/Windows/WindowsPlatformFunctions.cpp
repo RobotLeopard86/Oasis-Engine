@@ -6,7 +6,7 @@
 namespace Oasis {
 	PlatformFunctions* PlatformFunctions::instance = new WindowsPlatformFunctions;
 
-	float WindowsPlatformFunctions::GetFrameTime_Impl() {
+	float WindowsPlatformFunctions::GetElapsedTime_Impl() {
 		return glfwGetTime();
 	}
 }
