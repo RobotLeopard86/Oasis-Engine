@@ -2,15 +2,17 @@
 
 #include "Camera.h"
 
+#include <glm/glm.hpp>
+
 namespace Oasis {
-	class OrthographicCamera : public Camera {
+	class PerspectiveCamera : public Camera {
 	public:
-		OrthographicCamera(float left, float right, float top, float bottom);
+		PerspectiveCamera(float fov, float farPlane);
 
 		const glm::vec3& GetPosition() const override { return position; }
 		void SetPosition(const glm::vec3& pos) override { position = pos; position.y *= -1; RecalculateViewMatrix(); }
-		const glm::vec3& GetRotation() const override { return glm::vec3(0, 0, rotation); }
-		void SetRotation(const glm::vec3& rot) override { rotation = rot.z; RecalculateViewMatrix(); }
+		const glm::vec3& GetRotation() const override { return rotation; }
+		void SetRotation(const glm::vec3& rot) override { rotation = rot; RecalculateViewMatrix(); }
 
 		const glm::mat4& GetProjectionMatrix() const override { return projectionMatrix; }
 		const glm::mat4& GetViewMatrix() const override { return viewMatrix; }
@@ -21,7 +23,7 @@ namespace Oasis {
 		glm::mat4 viewProjectionMatrix;
 
 		glm::vec3 position;
-		float rotation;
+		glm::vec3 rotation;
 
 		void RecalculateViewMatrix();
 	};

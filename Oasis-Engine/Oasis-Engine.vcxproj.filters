@@ -1416,6 +1416,8 @@
     <ClInclude Include="src\OasisEngine\Core\Timestep.h" />
     <ClInclude Include="src\OasisEngine\PlatformFunctions.h" />
     <ClInclude Include="src\Platform\Windows\WindowsPlatformFunctions.h" />
+    <ClInclude Include="src\OasisEngine\Rendering\Cameras\PerspectiveCamera.h" />
+    <ClInclude Include="src\OasisEngine\Rendering\Cameras\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -1479,5 +1481,6 @@
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsPlatformFunctions.cpp" />
+    <ClCompile Include="src\OasisEngine\Rendering\Cameras\PerspectiveCamera.cpp" />
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@
 #include "OasisEngine/Rendering/Renderer.h"
 #include "OasisEngine/Rendering/RenderJob.h"
 #include "OasisEngine/Rendering/Cameras/OrthographicCamera.h"
+#include "OasisEngine/Rendering/Cameras/PerspectiveCamera.h"
 
 //External includes
 #include "imgui/imgui.h"

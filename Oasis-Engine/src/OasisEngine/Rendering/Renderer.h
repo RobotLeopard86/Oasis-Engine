@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RendererAPI.h"
-#include "Cameras/OrthographicCamera.h"
+#include "Cameras/Camera.h"
 #include "Shader.h"
 
 #include <glm/glm.hpp>
@@ -9,7 +9,7 @@
 namespace Oasis {
 	class Renderer {
 	public:
-		static void StartScene(OrthographicCamera& mainCamera);
+		static void StartScene(Camera& mainCamera);
 		static void ConcludeScene();
 
 		static void SubmitRawGeometry(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader>& shader);

@@ -5,7 +5,7 @@
 
 namespace Oasis {
 	OrthographicCamera::OrthographicCamera(float left, float right, float top, float bottom)
-		: projectionMatrix(glm::ortho(left, right, bottom, top, -1.0f, 1.0f)), viewMatrix(1.0f), position(0.0f, 0.0f, 0.0f), rotation(0.0f) {
+		: projectionMatrix(glm::ortho(left, right, bottom, top, -1.0f, 1.0f)), viewMatrix(1.0f), position(0.0f), rotation(0.0f) {
 		viewProjectionMatrix = projectionMatrix * viewMatrix;
 	}
 

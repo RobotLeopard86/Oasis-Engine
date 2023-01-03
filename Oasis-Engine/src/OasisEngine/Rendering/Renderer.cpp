@@ -7,7 +7,7 @@ namespace Oasis {
 	bool Renderer::allowSubmissions = false;
 	glm::mat4 Renderer::viewProjectionMatrix = glm::mat4(0.0f);
 
-	void Renderer::StartScene(OrthographicCamera& mainCamera) {
+	void Renderer::StartScene(Camera& mainCamera) {
 		if(allowSubmissions) {
 			OE_COREASSERT(false, "Cannot start scene as the current scene hasn't been concluded. Ignoring start scene call.");
 			return;
