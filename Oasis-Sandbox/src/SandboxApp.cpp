@@ -3,7 +3,7 @@
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Sandbox"), cam(90.0f, 1000.0f), camPosition(0.0f), camRotation(0.0f), camSpeed(1.0f),
+		: Layer("Sandbox"), cam(-1.6f, 1.6f, -0.9f, 0.9f), camPosition(0.0f), camRotation(0.0f), camSpeed(1.0f),
 		camRotSpeed(2.0f), lastSecondTime(0.0f), fps(0.0f), frameCount(0), lastDeltaSeconds(0.0f) {}
 
 	void OnUpdate(Oasis::Timestep step) override {
@@ -21,42 +21,24 @@ public:
 		
 		if(Oasis::Input::IsKeyPressed(OE_KEY_R)) {
 			camPosition = glm::vec3(0.0f);
-			camRotation = glm::vec3(0.0f);
+			camRotation = 0.0f;
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_Z)) {
-			camRotation = glm::vec3(0.0f);
+			camRotation = 0.0f;
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_C)) {
 			camPosition = glm::vec3(0.0f);
 		}
 
 		if(Oasis::Input::IsKeyPressed(OE_KEY_E)) {
-			camRotation.x -= camRotSpeed;
-			if(camRotation.x < 1) camRotation.x = 360;
+			camRotation -= camRotSpeed;
+			if(camRotation < 1) camRotation = 360;
 		}
 		else if(Oasis::Input::IsKeyPressed(OE_KEY_Q)) {
-			camRotation.x += camRotSpeed;
-			if(camRotation.x > 359) camRotation.x = 0;
-		}
-
-		if (Oasis::Input::IsKeyPressed(OE_KEY_Z)) {
-			camRotation.y -= camRotSpeed;
-			if (camRotation.y < 1) camRotation.y = 360;
-		}
-		else if (Oasis::Input::IsKeyPressed(OE_KEY_X)) {
-			camRotation.y += camRotSpeed;
-			if (camRotation.y > 359) camRotation.y = 0;
-		}
-
-		if (Oasis::Input::IsKeyPressed(OE_KEY_B)) {
-			camRotation.z -= camRotSpeed;
-			if (camRotation.z < 1) camRotation.z = 360;
-		}
-		else if (Oasis::Input::IsKeyPressed(OE_KEY_N)) {
-			camRotation.z += camRotSpeed;
-			if (camRotation.z > 359) camRotation.z = 0;
+			camRotation += camRotSpeed;
+			if(camRotation > 359) camRotation = 0;
 		}
 
 		cam.SetPosition(camPosition);
-		cam.SetRotation(camRotation);
+		cam.SetRotation(glm::vec3(0.0f));
 
 		Oasis::Renderer::StartScene(cam);
 		Oasis::Renderer::SubmitRawGeometry(vertexArray, shader);
@@ -67,7 +49,7 @@ public:
 		frameCount++;
 
 		ImGui::Begin("Controls");
-		ImGui::Text("WASD to move,\nE and Q to rotate X axis,\nZ and X to rotate Y axis,\nB and N to rotate Z axis,\nR to reset everything,\nC to reset position,\nZ to reset rotation");
+		ImGui::Text("WASD to move,\nE and Q to rotate,\nR to reset everything,\nC to reset position,\nZ to reset rotation");
 		ImGui::End();
 
 		float elapsed = Oasis::PlatformFunctions::GetElapsedTime();
@@ -176,9 +158,10 @@ private:
 	std::shared_ptr<Oasis::IndexBuffer> indexBuffer;
 	std::shared_ptr<Oasis::Shader> shader;
 
-	Oasis::PerspectiveCamera cam;
+	Oasis::OrthographicCamera cam;
 	glm::vec3 camPosition;
-	glm::vec3 camRotation;
+
+	float camRotation;
 	float camSpeed;
 	float camRotSpeed;
 
