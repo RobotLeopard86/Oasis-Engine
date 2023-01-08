@@ -1418,6 +1418,7 @@
     <ClInclude Include="src\Platform\Windows\WindowsPlatformFunctions.h" />
     <ClInclude Include="src\OasisEngine\Rendering\Cameras\PerspectiveCamera.h" />
     <ClInclude Include="src\OasisEngine\Rendering\Cameras\Camera.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OasisEngine\Application.cpp">
@@ -1453,9 +1454,6 @@
     <ClCompile Include="src\OasisEngine\Rendering\RendererAPI.cpp">
       <Filter>src\OasisEngine\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\OasisEngine\Rendering\Shader.cpp">
-      <Filter>src\OasisEngine\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="src\OasisEngine\Rendering\VertexArray.cpp">
       <Filter>src\OasisEngine\Rendering</Filter>
     </ClCompile>
@@ -1482,5 +1480,6 @@
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsPlatformFunctions.cpp" />
     <ClCompile Include="src\OasisEngine\Rendering\Cameras\PerspectiveCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

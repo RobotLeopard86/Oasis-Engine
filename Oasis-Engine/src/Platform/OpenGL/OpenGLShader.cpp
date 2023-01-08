@@ -1,11 +1,15 @@
 #include "OasisPCH.h"
-#include "Shader.h"
+#include "OpenGLShader.h"
 
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
 
 namespace Oasis {
-	Shader::Shader(std::string& vertexSrc, std::string fragmentSrc) {
+	Shader* Shader::Generate(std::string& vertexSrc, std::string fragmentSrc) {
+		return new OpenGLShader(vertexSrc, fragmentSrc);
+	}
+
+	OpenGLShader::OpenGLShader(std::string& vertexSrc, std::string fragmentSrc) {
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		const GLchar* source = vertexSrc.c_str();
 
@@ -73,18 +77,20 @@ namespace Oasis {
 		glDetachShader(program, vertexShader);
 		glDetachShader(program, fragmentShader);
 	}
-	Shader::~Shader() {}
 
-	void Shader::Bind() const {
+	OpenGLShader::~OpenGLShader() {}
+
+	void OpenGLShader::Bind() const {
 		glUseProgram(renderId);
 	}
 
-	void Shader::Unbind() const {
+	void OpenGLShader::Unbind() const {
 		glDeleteProgram(renderId);
 	}
-	void Shader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix) {
+
+	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix) {
 		GLint uniformLocation = glGetUniformLocation(renderId, name.c_str());
-		if(uniformLocation == -1) {
+		if (uniformLocation == -1) {
 			OE_COREASSERT(false, "Cannot upload data to nonexistent uniform!");
 			return;
 		}

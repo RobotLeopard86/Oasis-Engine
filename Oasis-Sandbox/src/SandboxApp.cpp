@@ -176,7 +176,7 @@ public:
 			}
 		)";
 
-		shader.reset(new Oasis::Shader(vertexSrc, fragmentSrc));
+		shader.reset(Oasis::Shader::Generate(vertexSrc, fragmentSrc));
 
 		Oasis::RenderJob::SetClearColor({ 0.15, 0.15, 0.15, 1.0 });
 	}
