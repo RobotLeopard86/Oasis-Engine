@@ -5,8 +5,8 @@
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Sandbox"), cam(70, 100000), camPosition(-0.373659f, -0.213583, 3.97485), camRotation(0.0f), camSpeed(1.0f),
-		camRotSpeed(2.0f), lastSecondTime(0.0f), fps(0.0f), frameCount(0), lastDeltaSeconds(0.0f) {}
+		: Layer("Sandbox"), cam(70), camPosition(-0.373659f, -0.213583, 3.97485), camRotation(0.0f), camSpeed(1.0f),
+		camRotSpeed(0.5f), lastSecondTime(0.0f), fps(0.0f), frameCount(0), lastDeltaSeconds(0.0f) {}
 
 	void OnUpdate(Oasis::Timestep step) override {
 		if(Oasis::Input::IsKeyPressed(OE_KEY_W)) {

@@ -26,7 +26,7 @@ See [the contribution page](CONTRIBUTING.md) for more details
 If you find Oasis Engine useful and decide to make your own version, please give credit to myself and all other project contributors. It means a lot to know that our hard work is being appreciated. Oasis Engine is licensed under the Apache License 2.0, so make sure to respect the license.  
 
 ## Third Party Licenses  
-Oasis Engine uses multiple third party libraries. As each has different licenses that must be respected, a copy of each is placed in the root directory, named by the library name, which is an exact copy of the license for the respective library.  
+Oasis Engine uses multiple third party libraries. As each has different licenses that must be respected, a copy of each is placed in the thirdpartylicenses folder in the root directory, named by the library name, which is an exact copy of the license for the respective library.  
 
 Enjoy!  
 -RobotLeopard86

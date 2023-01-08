@@ -7,7 +7,7 @@
 namespace Oasis {
 	class PerspectiveCamera : public Camera {
 	public:
-		PerspectiveCamera(float fov, float farPlane);
+		PerspectiveCamera(float fov);
 
 		const glm::vec3& GetPosition() const override { return position; }
 		void SetPosition(const glm::vec3& pos) override { position = pos; position.y *= -1; RecalculateViewMatrix(); }
@@ -25,6 +25,9 @@ namespace Oasis {
 		glm::vec3 position;
 		glm::vec3 rotation;
 
+		glm::vec3 lookTarget;
+
 		void RecalculateViewMatrix();
+		void RecalculateLookTarget();
 	};
 }
