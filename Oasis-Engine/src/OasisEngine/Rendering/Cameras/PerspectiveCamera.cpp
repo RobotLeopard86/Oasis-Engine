@@ -9,7 +9,7 @@ namespace Oasis {
 		position(0.0f), rotation(0.0f), viewProjectionMatrix(0.0f) {}
 
 	void PerspectiveCamera::RecalculateViewMatrix() {
-		viewMatrix = glm::lookAt(position, glm::vec3(rotation.x / 360, rotation.y / 360, rotation.z / 360), glm::vec3(0.0f, 1.0f, 0.0f));
+		viewMatrix = glm::lookAt(position, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
 		viewProjectionMatrix = projectionMatrix * viewMatrix;
 	}
 }

@@ -12,7 +12,7 @@ namespace Oasis {
 		static void StartScene(Camera& mainCamera);
 		static void ConcludeScene();
 
-		static void SubmitRawGeometry(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader>& shader);
+		static void SubmitRawGeometry(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader>& shader, const glm::vec3& transform);
 
 		inline static RendererAPI::RenderBackend GetRenderBackend() { return RendererAPI::GetBackend(); }
 	private:

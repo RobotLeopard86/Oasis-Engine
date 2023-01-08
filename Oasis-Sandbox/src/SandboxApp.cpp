@@ -1,9 +1,11 @@
 #include "Oasis.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Sandbox"), cam(70, 1000), camPosition(-0.373659f, -0.213583, 3.97485), camRotation(0.0f), camSpeed(1.0f),
+		: Layer("Sandbox"), cam(70, 100000), camPosition(-0.373659f, -0.213583, 3.97485), camRotation(0.0f), camSpeed(1.0f),
 		camRotSpeed(2.0f), lastSecondTime(0.0f), fps(0.0f), frameCount(0), lastDeltaSeconds(0.0f) {}
 
 	void OnUpdate(Oasis::Timestep step) override {
@@ -62,7 +64,7 @@ public:
 		cam.SetRotation(camRotation);
 
 		Oasis::Renderer::StartScene(cam);
-		Oasis::Renderer::SubmitRawGeometry(vertexArray, shader);
+		Oasis::Renderer::SubmitRawGeometry(vertexArray, shader, glm::vec3(0.0f, 0.0f, 0.0f));
 		Oasis::Renderer::ConcludeScene();
 	}
 
@@ -164,12 +166,13 @@ public:
 			layout(location=1) in vec4 color;
 
 			uniform mat4 vpm;
+			uniform mat4 transform;
 
 			out vec4 vertexColor;
 
 			void main() {
 				vertexColor = color;
-				gl_Position = vpm * vec4(pos, 1.0);
+				gl_Position = vpm * transform * vec4(pos, 1.0);
 			}
 		)";
 

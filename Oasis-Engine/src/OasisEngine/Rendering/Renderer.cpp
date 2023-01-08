@@ -3,6 +3,8 @@
 
 #include "RenderJob.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 namespace Oasis {
 	bool Renderer::allowSubmissions = false;
 	glm::mat4 Renderer::viewProjectionMatrix = glm::mat4(0.0f);
@@ -27,7 +29,7 @@ namespace Oasis {
 		viewProjectionMatrix = glm::mat4(0.0f);
 	}
 
-	void Renderer::SubmitRawGeometry(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader>& shader) {
+	void Renderer::SubmitRawGeometry(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader>& shader, const glm::vec3& transform) {
 		if(!allowSubmissions) {
 			OE_COREASSERT(false, "Cannot submit geometry when a scene is not active!");
 			return;
@@ -35,6 +37,8 @@ namespace Oasis {
 
 		shader->Bind();
 		shader->UploadUniformMat4("vpm", viewProjectionMatrix);
+		shader->UploadUniformMat4("transform", glm::translate(glm::mat4(1.0f), transform));
+
 		vertexArray->Bind();
 		RenderJob::DrawIndexed(vertexArray);
 	}
