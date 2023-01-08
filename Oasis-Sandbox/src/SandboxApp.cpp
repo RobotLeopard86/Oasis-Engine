@@ -117,13 +117,15 @@ public:
 	void OnInit() override {
 		vertexArray.reset(Oasis::VertexArray::Create());
 
-		float vertices[6 * 7]{
-			0.4375f, 0.75f, 0.0f, 0.8984375f, 0.0f, 0.0f, 1.0f,
-			-0.4375f, 0.75f, 0.0f, 0.99609375f, 0.45703125f, 0.1015625f, 1.0f,
-			-0.85f, 0.0f, 0.0f, 0.99609375f, 0.796875f, 0.0f, 1.0f,
-			0.85f, 0.0f, 0.0f, 0.671875f, 0.0f, 0.8984375f, 1.0f,
-			0.4375f, -0.75f, 0.0f, 0.0f, 0.44921875f, 0.8984375f, 1.0f,
-			-0.4375f, -0.75f, 0.0f, 0.19921875f, 0.796875f, 0.19921875f, 1.0f
+		float vertices[8 * 7]{
+			0.75, 0.75f, 0.75f, 1.0f, 1.0f, 1.0f, 1.0f,
+			-0.75, 0.75f, 0.75f, 0.0f, 0.796875f, 0.265625f, 1.0f,
+			0.75, -0.75f, 0.75f, 0.0f, 0.671875f, 0.8984375f, 1.0f,
+			-0.75, -0.75f, 0.75f, 0.796875f, 0.0f, 0.0f, 1.0f,
+			0.75, 0.75f, -0.75f, 0.0f, 0.0f, 0.0f, 1.0f,
+			-0.75, 0.75f, -0.75f, 0.8984375f, 0.8984375f, 0.0f, 1.0f,
+			0.75, -0.75f, -0.75f, 0.5234375f, 0.0f, 0.69921875f, 1.0f,
+			-0.75, -0.75f, -0.75f, 0.0f, 0.0f, 0.5f, 1.0f
 		};
 
 		vertexBuffer.reset(Oasis::VertexBuffer::Create(vertices, sizeof(vertices)));
@@ -137,11 +139,18 @@ public:
 
 		vertexArray->AddVertexBuffer(vertexBuffer);
 
-		uint32_t indices[4 * 3]{
-			0, 3, 4,
-			1, 2, 5,
+		uint32_t indices[12 * 3]{
+			0, 1, 3,
+			0, 2, 3,
+			4, 5, 7,
+			4, 6, 7,
+			0, 4, 6,
+			0, 2, 6,
+			1, 3, 7,
+			1, 5, 7,
 			0, 1, 5,
-			0, 4, 5
+			0, 4, 5,
+			2, 3, 7
 		};
 
 		indexBuffer.reset(Oasis::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
