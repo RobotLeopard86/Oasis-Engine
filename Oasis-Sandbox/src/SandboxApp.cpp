@@ -3,14 +3,14 @@
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Sandbox"), cam(-1.6f, 1.6f, -0.9f, 0.9f), camPosition(0.0f), camRotation(0.0f), camSpeed(1.0f),
+		: Layer("Sandbox"), cam(70, 1000), camPosition(-0.373659f, -0.213583, 3.97485), camRotation(0.0f), camSpeed(1.0f),
 		camRotSpeed(2.0f), lastSecondTime(0.0f), fps(0.0f), frameCount(0), lastDeltaSeconds(0.0f) {}
 
 	void OnUpdate(Oasis::Timestep step) override {
 		if(Oasis::Input::IsKeyPressed(OE_KEY_W)) {
-			camPosition.y -= camSpeed * step;
+			camPosition.z -= camSpeed * step;
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_S)) {
-			camPosition.y += camSpeed * step;
+			camPosition.z += camSpeed * step;
 		}
 		
 		if(Oasis::Input::IsKeyPressed(OE_KEY_A)) {
@@ -18,27 +18,48 @@ public:
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_D)) {
 			camPosition.x += camSpeed * step;
 		}
+
+		if (Oasis::Input::IsKeyPressed(OE_KEY_Q)) {
+			camPosition.y -= camSpeed * step;
+		} else if (Oasis::Input::IsKeyPressed(OE_KEY_E)) {
+			camPosition.y += camSpeed * step;
+		}
 		
 		if(Oasis::Input::IsKeyPressed(OE_KEY_R)) {
 			camPosition = glm::vec3(0.0f);
-			camRotation = 0.0f;
+			camRotation = glm::vec3(0.0f);
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_Z)) {
-			camRotation = 0.0f;
+			camRotation = glm::vec3(0.0f);
 		} else if(Oasis::Input::IsKeyPressed(OE_KEY_C)) {
 			camPosition = glm::vec3(0.0f);
 		}
 
-		if(Oasis::Input::IsKeyPressed(OE_KEY_E)) {
-			camRotation -= camRotSpeed;
-			if(camRotation < 1) camRotation = 360;
+		if(Oasis::Input::IsKeyPressed(OE_KEY_Y)) {
+			camRotation.x -= camRotSpeed;
+			if(camRotation.x < 1) camRotation.x = 360;
+		} else if(Oasis::Input::IsKeyPressed(OE_KEY_T)) {
+			camRotation.x += camRotSpeed;
+			if(camRotation.x > 359) camRotation.x = 0;
 		}
-		else if(Oasis::Input::IsKeyPressed(OE_KEY_Q)) {
-			camRotation += camRotSpeed;
-			if(camRotation > 359) camRotation = 0;
+
+		if (Oasis::Input::IsKeyPressed(OE_KEY_B)) {
+			camRotation.y -= camRotSpeed;
+			if (camRotation.y < 1) camRotation.y = 360;
+		} else if (Oasis::Input::IsKeyPressed(OE_KEY_N)) {
+			camRotation.y += camRotSpeed;
+			if (camRotation.y > 359) camRotation.y = 0;
+		}
+
+		if (Oasis::Input::IsKeyPressed(OE_KEY_O)) {
+			camRotation.z -= camRotSpeed;
+			if (camRotation.z < 1) camRotation.z = 360;
+		} else if (Oasis::Input::IsKeyPressed(OE_KEY_P)) {
+			camRotation.z += camRotSpeed;
+			if (camRotation.z > 359) camRotation.z = 0;
 		}
 
 		cam.SetPosition(camPosition);
-		cam.SetRotation(glm::vec3(0.0f));
+		cam.SetRotation(camRotation);
 
 		Oasis::Renderer::StartScene(cam);
 		Oasis::Renderer::SubmitRawGeometry(vertexArray, shader);
@@ -49,7 +70,7 @@ public:
 		frameCount++;
 
 		ImGui::Begin("Controls");
-		ImGui::Text("WASD to move,\nE and Q to rotate,\nR to reset everything,\nC to reset position,\nZ to reset rotation");
+		ImGui::Text("WASD and EQ to move,\nY and T to rotate X,\nB and N to rotate Y, \nO and P to rotate Z,\nR to reset everything,\nC to reset position,\nZ to reset rotation");
 		ImGui::End();
 
 		float elapsed = Oasis::PlatformFunctions::GetElapsedTime();
@@ -61,18 +82,27 @@ public:
 			lastDeltaSeconds = step.GetSeconds();
 		}
 
-		std::stringstream ss;
-		ss << "Delta time (seconds): " << lastDeltaSeconds << "\nDelta time (milliseconds): " << lastDeltaSeconds * 1000 << "\nFPS: " << fps << "\nVSync Enabled: " << BoolToYesNo(Oasis::Application::Get().GetWindow().IsVSyncEnabled());
+		std::stringstream ss1;
+		ss1 << "Delta time (seconds): " << lastDeltaSeconds << "\nDelta time (milliseconds): " << lastDeltaSeconds * 1000 << "\nFPS: " << fps << "\nVSync Enabled: " << BoolToYesNo(Oasis::Application::Get().GetWindow().IsVSyncEnabled());
 
 		ImGui::SetNextWindowPos(ImVec2(150, 500), ImGuiCond_Once);
 		ImGui::SetNextWindowSize(ImVec2(250, 150), ImGuiCond_Once);
 		ImGui::Begin("Timing");
-		ImGui::Text(ss.str().c_str());
+		ImGui::Text(ss1.str().c_str());
+
+		std::stringstream ss2;
+		ss2 << "Camera Position: " << camPosition.x << ", " << camPosition.y << ", " << camPosition.z << "\nCamera Rotation: " << camRotation.x << ", " << camRotation.y << ", " << camRotation.z;
 		
 		if(ImGui::Button("Toggle VSync Enabled")) {
 			Oasis::Application::Get().GetWindow().SetVSyncEnabled(!Oasis::Application::Get().GetWindow().IsVSyncEnabled());
 		}
 
+		ImGui::End();
+
+		ImGui::SetNextWindowPos(ImVec2(150, 350), ImGuiCond_Once);
+		ImGui::SetNextWindowSize(ImVec2(400, 75), ImGuiCond_Once);
+		ImGui::Begin("Camera Data");
+		ImGui::Text(ss2.str().c_str());
 		ImGui::End();
 	}
 
@@ -158,10 +188,10 @@ private:
 	std::shared_ptr<Oasis::IndexBuffer> indexBuffer;
 	std::shared_ptr<Oasis::Shader> shader;
 
-	Oasis::OrthographicCamera cam;
+	Oasis::PerspectiveCamera cam;
 	glm::vec3 camPosition;
+	glm::vec3 camRotation;
 
-	float camRotation;
 	float camSpeed;
 	float camRotSpeed;
 
