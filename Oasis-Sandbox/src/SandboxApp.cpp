@@ -5,7 +5,7 @@
 class ExampleLayer : public Oasis::Layer {
 public:
 	ExampleLayer()
-		: Layer("Sandbox"), cam(70), camPosition(-0.373659f, -0.213583, 3.97485), camRotation(0.0f), camSpeed(1.0f),
+		: Layer("Sandbox"), cam(70), camPosition(0.0f), camRotation(0.0f), camSpeed(1.0f),
 		camRotSpeed(0.5f), lastSecondTime(0.0f), fps(0.0f), frameCount(0), lastDeltaSeconds(0.0f) {}
 
 	void OnUpdate(Oasis::Timestep step) override {
@@ -64,7 +64,7 @@ public:
 		cam.SetRotation(camRotation);
 
 		Oasis::Renderer::StartScene(cam);
-		Oasis::Renderer::SubmitRawGeometry(vertexArray, shader, glm::vec3(0.0f, 0.0f, 0.0f));
+		Oasis::Renderer::SubmitRawGeometry(vertexArray, shader, glm::vec3(5.0f, 0.0f, 0.0f));
 		Oasis::Renderer::ConcludeScene();
 	}
 
@@ -93,7 +93,7 @@ public:
 		ImGui::Text(ss1.str().c_str());
 
 		std::stringstream ss2;
-		ss2 << "Camera Position: " << camPosition.x << ", " << camPosition.y << ", " << camPosition.z << "\nCamera Rotation: " << camRotation.x << ", " << camRotation.y << ", " << camRotation.z;
+		ss2 << "Camera Position: " << camPosition.x << ", " << camPosition.y << ", " << camPosition.z << "\nCamera Rotation: " << camRotation.x << ", " << camRotation.y << ", " << camRotation.z << "\nCamera Look Target: " << cam.GetLookTarget().x << ", " << cam.GetLookTarget().y << ", " << cam.GetLookTarget().z;
 		
 		if(ImGui::Button("Toggle VSync Enabled")) {
 			Oasis::Application::Get().GetWindow().SetVSyncEnabled(!Oasis::Application::Get().GetWindow().IsVSyncEnabled());
@@ -101,9 +101,9 @@ public:
 
 		ImGui::End();
 
-		ImGui::SetNextWindowPos(ImVec2(150, 350), ImGuiCond_Once);
 		ImGui::SetNextWindowSize(ImVec2(400, 75), ImGuiCond_Once);
 		ImGui::Begin("Camera Data");
+		ImGui::SetNextWindowPos(ImVec2(150, 350), ImGuiCond_Once);
 		ImGui::Text(ss2.str().c_str());
 		ImGui::End();
 	}

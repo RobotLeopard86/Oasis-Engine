@@ -17,6 +17,8 @@ namespace Oasis {
 		const glm::mat4& GetProjectionMatrix() const override { return projectionMatrix; }
 		const glm::mat4& GetViewMatrix() const override { return viewMatrix; }
 		const glm::mat4& GetViewProjectionMatrix() const override { return viewProjectionMatrix; }
+
+		const glm::vec3& GetLookTarget() const { return lookTarget;  }
 	private:
 		glm::mat4 projectionMatrix;
 		glm::mat4 viewMatrix;

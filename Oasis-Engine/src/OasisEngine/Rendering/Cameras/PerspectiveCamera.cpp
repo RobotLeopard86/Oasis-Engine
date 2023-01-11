@@ -18,8 +18,10 @@ namespace Oasis {
 		float xRotRadians = glm::radians(rotation.x);
 		float yRotRadians = glm::radians(rotation.y);
 
-		lookTarget.x = sqrt(1 - pow(sin(xRotRadians), 2) / 1 + pow(tan(yRotRadians), 2));
+		lookTarget.x = sqrt((1 - pow(sin(xRotRadians), 2)) / (1 + pow(tan(yRotRadians), 2)));
 		lookTarget.y = sin(xRotRadians);
 		lookTarget.z = lookTarget.x * tan(yRotRadians);
+
+		lookTarget += position;
 	}
 }
